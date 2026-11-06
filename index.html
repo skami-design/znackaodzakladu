@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Značka od základů · krátké výzvy pro handmade tvůrkyně</title>
+<meta name="description" content="Krátké výzvy pro handmade tvůrkyně: profil, obsah, Stories, vizuál a AI. 20–30 minut denně, malé skupiny a osobní zpětná vazba od Mišky.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16211a;--ink-soft:#2b362e;--muted:#5c6a5f;
+  --plum:#714C5D;--plum-2:#94647B;--mauve:#c0a0a5;--mauve-pale:#f1e7e9;
+  --green:#526658;--green-2:#5C7665;--mint:#9fd4b0;--mint-pale:#d5f0de;
+  --cream:#fbf8f5;--white:#fff;--line:#e6e1dc;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Source Sans 3',system-ui,sans-serif;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(1120px,100% - 40px);margin:0 auto}
+.narrow{width:min(760px,100% - 40px);margin:0 auto}
+section{padding:96px 0}
+.kicker{font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--plum-2);margin-bottom:14px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15}
+h1{font-size:clamp(38px,6vw,64px)}
+h2{font-size:clamp(30px,4.2vw,46px);margin-bottom:18px}
+h3{font-size:24px}
+h1 em,h2 em,h3 em{font-style:italic;color:var(--mauve)}
+.lead{font-size:20px;color:var(--ink-soft);max-width:640px}
+.center{text-align:center}.center .lead{margin:0 auto}
+.btn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:16px;letter-spacing:.03em;padding:16px 30px;border-radius:999px;text-decoration:none;border:none;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-dark{background:var(--ink);color:var(--mint-pale)}
+.btn-mint{background:var(--mint);color:var(--ink)}
+.btn-ghost{background:transparent;color:inherit;border:1.5px solid currentColor}
+.rule{width:56px;height:3px;background:var(--mauve);border-radius:2px;margin:0 0 22px}
+.center .rule{margin:0 auto 22px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(251,248,245,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--serif);font-size:20px;font-weight:600;text-decoration:none}
+.logo span{font-style:italic;color:var(--plum-2)}
+nav .links{display:flex;gap:26px;align-items:center;font-size:15px;font-weight:600}
+nav .links a{text-decoration:none;color:var(--muted)}
+nav .links a.btn{color:var(--mint-pale);padding:10px 20px;font-size:14px}
+@media(max-width:820px){nav .links a:not(.btn){display:none}}
+
+/* hero */
+.hero{background:var(--plum);color:#fff;padding:0;overflow:hidden;position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;min-height:620px;padding-top:56px}
+.hero .kicker{color:var(--mint)}
+.hero h1{color:#fff}.hero h1 em{color:var(--mint)}
+.hero .lead{color:#f3e9ec;margin:22px 0 26px}
+.without{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:15px;color:var(--mint-pale);margin-bottom:30px}
+.without span::before{content:"— ";color:var(--mauve)}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero .ctas .btn-ghost{color:#fff}
+.hero-photo{position:relative;align-self:end;height:100%;display:flex;align-items:flex-end;justify-content:center}
+.hero-photo::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:var(--plum-2);bottom:70px;left:50%;transform:translateX(-50%)}
+.hero-photo::after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;background:var(--mint);opacity:.85;top:70px;right:10px}
+.hero-photo img{position:relative;width:min(400px,100%);border-radius:220px 220px 0 0;object-fit:cover;aspect-ratio:4/5}
+.trust{background:var(--ink);color:var(--mint-pale);font-size:14px;letter-spacing:.06em}
+.trust .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 36px;padding:16px 0;text-transform:uppercase;font-weight:600}
+.trust b{color:var(--mint)}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-top:56px;min-height:0}.hero-photo{height:auto}.hero-photo::before{width:300px;height:300px}}
+
+/* path chips */
+.path{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:30px}
+.path span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
+.path i{font-style:normal;color:var(--mint)}
+
+
+.banner{background:#5e3f4e;line-height:0}
+.banner img{width:100%;height:auto}
+.banner-in{position:relative}
+.bbtn{position:absolute;left:73.3%;width:22.3%;top:63%;height:8.2%;border-radius:10px;transition:box-shadow .2s,background .2s,transform .2s}
+.bbtn:hover{background:rgba(255,255,255,.18);box-shadow:0 0 0 3px rgba(213,240,222,.85),0 8px 24px rgba(0,0,0,.25);transform:translateY(-2px)}
+.bbtn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.bbtn:active{transform:translateY(0)}
+@media(max-width:700px){.bbtn{left:18.3%;width:63.4%;top:92.4%;height:5.4%;border-radius:999px}}
+.intro{padding:80px 0 30px}
+@media(min-width:701px){.trust{display:none}}
+.intro h1{max-width:900px}
+.intro .lead{margin:22px 0 26px}
+.intro .path span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
+.intro .path i{font-style:normal;color:var(--plum-2)}
+.intro .without{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:15px;color:var(--muted);margin-bottom:30px}
+.intro .without span::before{content:"— ";color:var(--mauve)}
+.intro .ctas{display:flex;gap:14px;flex-wrap:wrap}
+.intro + section{padding-top:60px}
+/* pains */
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.pain{background:#fff;border-radius:var(--r);padding:26px 26px 24px;border:1px solid var(--line)}
+.pain h3{font-size:21px;margin-bottom:8px}
+.pain p{font-size:16px;color:var(--muted)}
+.pain.praise{background:var(--green);color:#fff;border-color:var(--green)}
+.pain.praise h3{color:#fff}.pain.praise p{color:var(--mint-pale)}
+.punch{margin-top:44px;text-align:center;font-family:var(--serif);font-size:clamp(22px,2.8vw,30px);line-height:1.35}
+.punch em{color:var(--plum-2)}
+@media(max-width:900px){.pains{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.pains{grid-template-columns:1fr}}
+
+/* stavba */
+.stavba{background:var(--ink);color:#fff}
+.stavba h2{color:#fff}.stavba .lead{color:#cfd8d1}
+.stavba .kicker{color:var(--mint)}
+.stages{margin-top:50px;display:grid;gap:22px}
+.stage{display:grid;grid-template-columns:230px 1fr;gap:30px;border-top:1px solid rgba(255,255,255,.14);padding-top:26px}
+.stage .num{font-family:var(--serif);font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--mint)}
+.stage .name{font-family:var(--serif);font-size:34px;line-height:1.1;margin:4px 0 6px}
+.stage .what{font-size:15px;color:#b9c5bc}
+.stage-ch{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.ch-card{background:#223028;border-radius:var(--r);overflow:hidden;display:grid;grid-template-columns:104px 1fr;align-items:center;text-decoration:none;color:#fff;transition:background .15s}
+.ch-card:hover{background:#2a3a30}
+.ch-card img{width:104px;height:130px;object-fit:cover;align-self:start}
+.ch-card .b{padding:16px 18px}
+.ch-card .t{font-family:var(--serif);font-size:21px;line-height:1.2;margin-bottom:6px}
+.ch-card .p{font-size:14.5px;color:#cfd8d1;line-height:1.45;margin-bottom:8px}
+.ch-card .m{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mint);font-weight:600}
+.stavba .note{margin-top:34px;color:#b9c5bc;font-size:16px}
+@media(max-width:900px){.stage{grid-template-columns:1fr;gap:14px}.stage-ch{grid-template-columns:1fr}}
+
+/* challenge slider */
+.slider{margin-top:46px}
+.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.track::-webkit-scrollbar{display:none}
+.detail{flex:0 0 100%;scroll-snap-align:center;display:grid;grid-template-columns:340px 1fr;gap:48px;align-items:start;padding:8px 6px 16px;scroll-margin-top:90px}
+.detail>img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:22px;box-shadow:0 18px 40px rgba(22,33,26,.18)}
+.detail .stg{font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--plum-2);margin-top:14px}
+.detail h3{font-size:36px;margin:6px 0 10px}
+.detail .promise{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.4;color:var(--green);margin-bottom:18px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.meta span{background:var(--mint-pale);border-radius:999px;padding:5px 14px;font-size:14px;font-weight:600}
+.meta span.price{background:var(--ink);color:var(--mint-pale)}
+.more{background:#fff;border:1px solid var(--line);border-radius:16px;padding:0 20px}
+.more summary{padding:16px 0;font-size:16px}
+.more[open]{padding-bottom:18px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:4px}
+.cols h4{font-size:13px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px;color:var(--ink-soft)}
+.cols ul{list-style:none;font-size:16px;color:var(--muted)}
+.cols li{padding:4px 0 4px 18px;position:relative}
+.cols li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:2px;background:var(--mauve)}
+.leave{margin-top:18px;background:var(--cream);border-left:3px solid var(--mint);border-radius:0 12px 12px 0;padding:14px 18px;font-size:16px}
+.leave b{font-weight:600}
+.detail .actions{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.detail .actions small{color:var(--muted);font-size:14px}
+.snav{display:flex;justify-content:center;align-items:center;gap:22px;margin-top:26px}
+.arrow{width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:20px;cursor:pointer;color:var(--ink);transition:background .15s}
+.arrow:hover{background:var(--mint-pale)}
+.dots{display:flex;gap:9px}
+.dots button{width:11px;height:11px;border-radius:50%;border:none;cursor:pointer;background:var(--line);padding:0;transition:transform .15s}
+.dots button.on{background:var(--green);transform:scale(1.25)}
+@media(max-width:860px){.detail{grid-template-columns:1fr;gap:18px}.detail>img{max-width:360px;margin:0 auto}.cols{grid-template-columns:1fr}.detail h3{font-size:30px}}
+
+/* schedule */
+.schedule{background:var(--mint-pale)}
+.sched-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:26px;margin-top:40px}
+.next-big{background:var(--ink);color:#fff;border-radius:24px;padding:34px;display:flex;flex-direction:column;gap:12px}
+.next-big .kicker{color:var(--mint);margin:0}
+.next-big h3{font-size:36px;color:#fff}
+.next-big p{color:#cfd8d1}
+.next-big .meta span{background:#2a3a30;color:var(--mint-pale)}
+.next-big .meta span.price{background:var(--mint);color:var(--ink)}
+.then{display:grid;gap:14px}
+.then .item{background:#fff;border-radius:18px;padding:22px 24px}
+.then .item .d{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--plum-2)}
+.then .item .t{font-family:var(--serif);font-size:23px;margin:2px 0}
+.then .item .s{font-size:15px;color:var(--muted)}
+.vote{margin-top:26px;background:#fff;border-radius:24px;padding:34px;display:grid;grid-template-columns:1fr 1.3fr;gap:30px}
+.vote h3{font-size:28px;margin-bottom:10px}
+.vote p{color:var(--muted);font-size:16px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0}
+.opt label{display:block;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;font-weight:600;font-size:15.5px;cursor:pointer;height:100%}
+.opt label small{display:block;font-weight:400;color:var(--muted);font-size:13.5px}
+.opt input:checked+label{border-color:var(--green);background:var(--mint-pale)}
+.vote .row{display:flex;gap:10px;margin-top:14px}
+.bars{display:grid;gap:8px}
+.bar{position:relative;display:block;border:1.5px solid var(--line);border-radius:12px;padding:11px 14px;cursor:pointer;overflow:hidden;font-size:15.5px;font-weight:600}
+.bar input{position:absolute;opacity:0}
+.bar .fill{position:absolute;inset:0 auto 0 0;background:var(--mint-pale);width:0;transition:width .6s ease;z-index:0}
+.bar .lab,.bar .pct{position:relative;z-index:1}
+.bar .lab small{font-weight:400;color:var(--muted);font-size:13.5px;margin-left:6px}
+.bar .pct{float:right;color:var(--green);font-variant-numeric:tabular-nums}
+.bar:has(input:checked){border-color:var(--green)}
+.bar:has(input:checked) .fill{background:var(--mint)}
+.vote-note{margin-top:12px;font-size:14px!important}
+.vote input[type=email]{flex:1}
+@media(max-width:860px){.sched-grid,.vote{grid-template-columns:1fr}.opts{grid-template-columns:1fr}.vote .row{flex-direction:column}}
+
+/* story */
+.story .grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-top:10px}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ba figure{background:#fff;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.ba img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top}
+.ba figcaption{padding:10px 14px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+.ba figcaption span{display:block;letter-spacing:0;text-transform:none;font-weight:400;color:var(--muted);font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+.chips span{background:var(--ink);color:var(--mint-pale);border-radius:12px;padding:10px 16px;font-size:15px}
+.chips b{font-family:var(--serif);font-size:22px;color:var(--mint);font-weight:600;display:block;line-height:1.1}
+blockquote{font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.45;border-left:3px solid var(--mauve);padding-left:20px;margin:18px 0;color:var(--ink-soft)}
+blockquote cite{display:block;font-family:var(--sans);font-style:normal;font-size:14px;color:var(--muted);margin-top:8px}
+@media(max-width:860px){.story .grid{grid-template-columns:1fr}}
+
+/* reviews */
+.reviews{background:#fff}
+.score{display:flex;justify-content:center;gap:36px;flex-wrap:wrap;margin:30px 0 40px}
+.score div{text-align:center}
+.score b{display:block;font-family:var(--serif);font-size:44px;color:var(--plum);line-height:1}
+.score span{font-size:14px;color:var(--muted);letter-spacing:.04em}
+.rev-grid{columns:3 300px;column-gap:18px}
+.rev{break-inside:avoid;background:var(--cream);border-radius:18px;padding:24px;margin-bottom:18px}
+.rev p{font-size:16.5px;color:var(--ink-soft)}
+.rev .who{margin-top:12px;font-size:14px;font-weight:600}
+.rev .who span{display:block;font-weight:400;color:var(--muted)}
+
+/* fit */
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px}
+.fit{border-radius:24px;padding:32px}
+.fit.yes{background:var(--green);color:#fff}
+.fit.no{background:#fff;border:1px solid var(--line)}
+.fit h3{font-size:26px;margin-bottom:14px}
+.fit.yes h3{color:#fff}
+.fit ul{list-style:none}
+.fit li{padding:9px 0;border-top:1px solid rgba(0,0,0,.08);font-size:17px}
+.fit.yes li{border-color:rgba(255,255,255,.18);color:var(--mint-pale)}
+.fit.no li{color:var(--muted)}
+.fit.no a{color:var(--plum);font-weight:600}
+@media(max-width:760px){.fit-grid{grid-template-columns:1fr}}
+
+/* how */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}
+.step{background:#fff;border-radius:20px;padding:26px;border:1px solid var(--line)}
+.step .n{font-family:var(--serif);font-size:40px;color:var(--mauve);line-height:1}
+.step h3{font-size:20px;margin:10px 0 8px}
+.step p{font-size:15.5px;color:var(--muted)}
+.get{margin-top:22px;background:var(--plum);color:#fff;border-radius:20px;padding:24px 30px;display:flex;flex-wrap:wrap;gap:10px 34px;justify-content:center;font-size:16px}
+.get b{color:var(--mint);font-weight:600}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* quiz */
+.quiz-box{background:#fff;border-radius:24px;padding:34px;border:1px solid var(--line);margin-top:34px}
+.qprog{height:4px;background:var(--line);border-radius:4px;margin-bottom:24px;overflow:hidden}
+.qprog div{height:100%;background:var(--green);width:0;transition:width .3s}
+.qq{font-family:var(--serif);font-size:26px;line-height:1.3;margin-bottom:8px}
+.qhint{color:var(--muted);font-size:15.5px;margin-bottom:22px}
+.qbtns{display:flex;gap:12px;flex-wrap:wrap}
+.qres h3{font-size:30px;margin:6px 0 10px}
+.qres p{color:var(--muted);margin-bottom:18px}
+
+/* about */
+.about .grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.about img{border-radius:200px 200px 24px 24px;aspect-ratio:4/5;object-fit:cover}
+.about p{margin-bottom:14px;color:var(--ink-soft)}
+.about .sig{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--plum)}
+@media(max-width:860px){.about .grid{grid-template-columns:1fr}.about img{max-width:340px}}
+
+/* lead magnet */
+.lm{background:var(--green);color:#fff}
+.lm .grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.lm h2{color:#fff}.lm h2 em{color:var(--mint)}
+.lm p{color:var(--mint-pale)}
+.lm-box{background:rgba(255,255,255,.08);border-radius:22px;padding:28px;display:grid;gap:12px}
+.lm-placeholder{border:2px dashed rgba(255,255,255,.35);border-radius:14px;padding:40px;text-align:center;color:var(--mint-pale)}
+.lm small{color:#cfe3d5;font-size:13.5px}
+@media(max-width:860px){.lm .grid{grid-template-columns:1fr}}
+
+
+/* Ecomail formulář: sladění se stránkou */
+.ecm-form{min-height:60px}
+.ecm-form *{font-family:var(--sans)!important;box-sizing:border-box}
+.ecm-form form,.ecm-form > div{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;max-width:none!important}
+.ecm-form h1,.ecm-form h2,.ecm-form h3,.ecm-form h4{font-family:var(--serif)!important;color:#fff!important}
+.ecm-form p,.ecm-form label,.ecm-form span{color:var(--mint-pale)!important}
+.ecm-form label{font-size:14px!important;font-weight:600!important}
+.ecm-form input[type=text],.ecm-form input[type=email]{width:100%!important;font-size:16px!important;padding:13px 15px!important;border:1.5px solid rgba(255,255,255,.25)!important;border-radius:12px!important;background:#fff!important;color:var(--ink)!important;margin-bottom:12px!important;height:auto!important}
+.ecm-form input:focus{outline:none!important;border-color:var(--mint)!important}
+.ecm-form button,.ecm-form input[type=submit]{background:var(--mint)!important;color:var(--ink)!important;border:0!important;border-radius:999px!important;padding:16px 30px!important;font-weight:600!important;font-size:16px!important;cursor:pointer!important;width:auto!important;height:auto!important;transition:transform .15s!important}
+.ecm-form button:hover,.ecm-form input[type=submit]:hover{transform:translateY(-1px)}
+/* register */
+.register{background:var(--plum);color:#fff}
+.register h2{color:#fff}.register h2 em{color:var(--mint)}
+.register .lead{color:#f3e9ec}
+.reg-form{background:#fff;color:var(--ink);border-radius:26px;padding:36px;margin-top:36px;display:grid;gap:16px}
+label.f{font-size:14px;font-weight:600;display:block;margin-bottom:6px}
+input[type=text],input[type=email],select,textarea{width:100%;font:inherit;font-size:16px;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.variants{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.consent{display:flex;gap:10px;font-size:14.5px;color:var(--muted);align-items:flex-start}
+.consent input{margin-top:5px}
+.consent a{color:var(--plum)}
+.reg-form .btn{justify-self:start}
+.thanks{display:none;background:var(--mint-pale);border-radius:16px;padding:20px;font-size:17px}
+@media(max-width:640px){.two,.variants{grid-template-columns:1fr}.reg-form{padding:24px}}
+
+/* faq */
+details{border-top:1px solid var(--line);padding:18px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:20px}
+summary::after{content:"+";font-family:var(--serif);font-size:24px;color:var(--plum-2);line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:10px;color:var(--muted);font-size:16.5px}
+
+footer{background:var(--ink);color:#b9c5bc;font-size:14px;padding:36px 0}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{color:var(--mint-pale);text-decoration:none}
+.todo{background:#fff3cd;color:#7a5b00;font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a href="#" class="logo">Značka <span>od základů</span></a>
+  <div class="links">
+    <a href="#vyzvy">Výzvy</a>
+    <a href="#terminy">Termíny</a>
+    <a href="#reference">Reference</a>
+    <a href="#kviz">Kterou vybrat?</a>
+    <a href="#registrace" class="btn btn-dark">Chci místo</a>
+  </div>
+</div></nav>
+
+<!-- HERO: banner (desktop + mobil) -->
+<header class="banner"><div class="banner-in">
+  <picture>
+    <source media="(max-width:700px)" srcset="banner-misky-mobile.jpg">
+    <img src="banner-misky.jpg" alt="Značka od základů · Miška · Nejsi v tom sama, děláme to společně.">
+  </picture>
+  <a class="bbtn" href="#terminy" aria-label="Vyber si svou výzvu už dnes"></a>
+</div></header>
+<div class="trust"><div class="wrap">
+  <span><b>5,0 z 5</b> · 32 hodnocení</span><span>malé skupiny · max 10–12 míst</span><span>osobní zpětná vazba</span><span>100 % doporučuje na Facebooku</span>
+</div></div>
+
+<!-- INTRO -->
+<section class="intro"><div class="wrap">
+  <div class="kicker">Krátké výzvy pro handmade tvůrkyně</div>
+  <h1>Tvoje výrobky jsou krásné. Teď je čas, aby to <em>věděl i Instagram.</em></h1>
+  <p class="lead">Pět až deset dní, jedno téma a každý den jeden úkol, který rovnou uděláš na svém profilu. A ke všemu ode mě dostaneš osobní zpětnou vazbu.</p>
+  <div class="path"><span>Pochopí, kdo jsi</span><i>→</i><span>Najde tě</span><i>→</i><span>Pozná tě</span><i>→</i><span>Napíše si o objednávku</span></div>
+  <div class="without"><span>20–30 minut denně</span><span>bez tancování před kamerou</span><span>bez drahého kurzu</span><span>bez placené reklamy</span></div>
+  <div class="ctas"><a href="#terminy" class="btn btn-dark">Nejbližší výzva</a><a href="#kviz" class="btn btn-ghost">Nevím, kterou vybrat</a></div>
+</div></section>
+
+<!-- PAINS -->
+<section id="znas"><div class="wrap">
+  <div class="center"><div class="kicker">Znáš to taky?</div><div class="rule"></div><h2>Tvoříš poctivě. Jen se to zatím <em>neprodává.</em></h2></div>
+  <div class="pains">
+    <div class="pain praise"><h3>Jsi dobrá v tom, co děláš</h3><p>Kdo tvoje výrobky jednou drží v ruce, chce další. Na kvalitě tvé tvorby to opravdu neleží.</p></div>
+    <div class="pain"><h3>Krásný feed, prázdná schránka</h3><p>Srdíčka a „to je nádhera“ chodí. Zprávy „chci si objednat“ ne.</p></div>
+    <div class="pain"><h3>Obsah po půlnoci</h3><p>Přes den tvoříš, balíš a odpovídáš. Příspěvky řešíš, až všichni spí, a jeden ti zabere celý večer.</p></div>
+    <div class="pain"><h3>Prodáváš hlavně známým</h3><p>Kupují kamarádky, rodina a pár věrných. Cizí lidé tě na Instagramu zatím nenacházejí.</p></div>
+    <div class="pain"><h3>Schovaná za výrobky</h3><p>Na profilu je všechno, jen ne ty. Natočit se ti přijde trapné, a tak to pořád odkládáš.</p></div>
+    <div class="pain"><h3>Každý příspěvek jinak</h3><p>Jiné písmo, jiné barvy, jiný filtr. Profil nedrží pohromadě a ty pokaždé začínáš od nuly.</p></div>
+  </div>
+  <p class="punch">Nejde o to, že bys tvořila špatně nebo málo.<br>Jde o to, <em>v jakém pořadí stavíš.</em></p>
+</div></section>
+
+<!-- STAVBA -->
+<section class="stavba" id="vyzvy"><div class="wrap">
+  <div class="kicker">Metoda Značka od základů</div>
+  <h2>Značku stavím jako dům.<br><em>Od základů.</em></h2>
+  <p class="lead">Šest let jsem projektovala domy a vím, že fasáda nepomůže, když chybí základy. U profilu je to stejné: krásný vizuál neprodá, když z bia nikdo nepozná, co prodáváš. Každá výzva řeší jedno patro.</p>
+  <div class="stages" id="stages"></div>
+  <p class="note">Výzvy nemusíš jít popořadě, každá funguje sama za sebe. Ale když nevíš, kde začít, začni u základů. Nebo si nech poradit <a href="#kviz" style="color:var(--mint)">krátkým kvízem</a>.</p>
+</div></section>
+
+<!-- DETAIL -->
+<section id="detail"><div class="wrap">
+  <div class="center"><div class="kicker">Všechny výzvy</div><div class="rule"></div><h2>Co přesně <em>uděláme</em></h2><p class="lead">Každá výzva stojí sama za sebe a řeší jednu konkrétní věc. Listuj šipkami, nebo přejeď prstem.</p></div>
+  <div class="slider">
+    <div class="track" id="detailList"></div>
+    <div class="snav"><button class="arrow" id="sPrev" aria-label="Předchozí výzva">←</button><div class="dots" id="dots"></div><button class="arrow" id="sNext" aria-label="Další výzva">→</button></div>
+  </div>
+</div></section>
+
+<!-- SCHEDULE -->
+<section class="schedule" id="terminy"><div class="wrap">
+  <div class="kicker">Termíny</div>
+  <h2>Co se <em>chystá</em></h2>
+  <p class="lead">Termíny začátků jsou dané. Kterou výzvu do nich dám, rozhodujete vy: výzva s nejvíc hlasy dostane nejbližší volný termín.</p>
+  <div class="sched-grid">
+    <div class="next-big" id="nextBig"></div>
+    <div class="then" id="thenList"></div>
+  </div>
+  <form class="vote" action="https://formspree.io/f/xzdlojwl" method="POST" id="voteForm">
+    <input type="hidden" name="_subject" value="Hlas: další výzva · Značka od základů">
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+    <div>
+      <h3>Kterou výzvu <em>chceš příště?</em></h3>
+      <p>Vyber jednu a nech mi e-mail. Kdo hlasuje, dozví se o novém kole jako první, ještě než ho oznámím na Instagramu. Žádný spam, jen tohle.</p>
+      <p class="vote-note" id="voteNote"></p>
+    </div>
+    <div>
+      <div class="bars" id="bars"></div>
+      <div class="row"><input type="email" name="email" placeholder="tvuj@email.cz" required><button class="btn btn-dark" type="submit">Hlasovat</button></div>
+      <div class="thanks" id="voteThanks">Díky! Hlas mám a dám ti vědět jako první.</div>
+    </div>
+  </form>
+</div></section>
+
+<!-- STORY -->
+<section class="story" id="pribeh"><div class="wrap">
+  <!-- TODO: zveřejnit až po souhlasu Ireny (screeny profilu, citace, čísla) -->
+  <div class="grid">
+    <div>
+      <div class="kicker">Příběh účastnice</div>
+      <h2>Krásné svíčky měla od začátku. Profil to ale <em>neříkal.</em></h2>
+      <p class="lead">Irena tvoří designové svíčky RENÉA. Po Úklidu Instagramu přepsala bio, poskládala highlights jako cestu k objednávce a dala na profilovku sebe. Pak přidala Zkroť AI a dnes si obsah tvoří sama, svým stylem.</p>
+      <div class="chips">
+        <span><b>12k → 20k</b>zhlédnutí měsíčně po Úklidu IG</span>
+        <span><b>2 výzvy</b>Úklid IG a Zkroť AI</span>
+      </div>
+      <blockquote>„Odchádzam s tým, že sama si viem pomôcť. Mám z výziev fakt dobrý pocit.“<cite>Irena · @renea_art_in_bloom</cite></blockquote>
+    </div>
+    <div class="ba">
+      <figure><img src="irena-pred.jpg" alt="Profil RENÉA před výzvami"><figcaption>Před<span>když jsme začínaly</span></figcaption></figure>
+      <figure><img src="irena-po.jpg" alt="Profil RENÉA po výzvách"><figcaption>Teď<span>po Úklidu IG a dalších výzvách</span></figcaption></figure>
+    </div>
+  </div>
+</div></section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reference"><div class="wrap">
+  <div class="center"><div class="kicker">Co říkají tvůrkyně</div><div class="rule"></div><h2>Zeptala jsem se jich: <em>„Co se ti díky výzvě změnilo?“</em></h2></div>
+  <div class="score">
+    <div><b>5,0</b><span>průměrné hodnocení</span></div>
+    <div><b>32</b><span>hodnocení napříč výzvami</span></div>
+    <div><b>100 %</b><span>doporučuje na Facebooku</span></div>
+  </div>
+  <div class="rev-grid">
+    <div class="rev"><p>Díky výzvě jsem si vyladila profilovou fotku (aby lidi věděli, od koho nakupují), bio a highlights. Přeuspořádala jsem si mřížku a udělala si jasný plán přidávání příspěvků. Výzva mi otevřela oči.</p><div class="who">Vyšívané od Srdéčka<span>@vysivane_odsrdecka · Úklid Instagramu</span></div></div>
+    <div class="rev"><p>Celkově celý vizuál! Od teď už chci dávat vše sladěné a po prvním příspěvku vidím, že to má smysl! 2 uložení a 6 lidí se kouklo na profil! To se mi ještě nepovedlo.</p><div class="who">Květy Lu<span>@kvety_lu · Vylaď si vizuál</span></div></div>
+    <div class="rev"><p>Povedlo se mi nekoukat na sebe jako na trapnou Kamilu. Koukám teď na sebe jako na někoho, kdo se nebojí postavit se kameře čelem.</p><div class="who">Kami.Va<span>@by_kami.va · Ukaž se světu</span></div></div>
+    <div class="rev"><p>Konkrétně jsem změnila bio a profilovou fotku. Mám taky konečně jasný plán, co postovat a čeho tím dosáhnu, což jsem doteď netušila, a všechno byl jeden velký chaos.</p><div class="who">Pyrowoman<span>@pyrowoman_cz · Úklid Instagramu</span></div></div>
+    <div class="rev"><p>Vytvořila jsem své highlights, o kterých jsem neměla ani tušení. Plánuji týden dopředu a mohu tak být v klidu, protože vím, kdy a co postovat.</p><div class="who">Lumari by Marti<span>@lumari_by_marti · Úklid Instagramu</span></div></div>
+    <div class="rev"><p>Bez výzvy bych se nikdy k sebeprezentaci neodhodlala.</p><div class="who">Mishako<span>@mishako_macrame · Ukaž se světu</span></div></div>
+    <div class="rev"><p>Na příspěvky se teď koukám jinak: nemusí být pořád něco originální, spíš je užitečné, když je to konzistentní.</p><div class="who">@if_hacekalist<span>Vylaď si vizuál</span></div></div>
+    <div class="rev"><p>Aby se zákazník rychle zorientoval v tom, kdo jsem, co nabízím, kolik to stojí. Tohle byl můj hlavní cíl a výzva mi ukázala, jak na to.</p><div class="who">Koutek Čmeláka<span>@koutekucmelaka · Úklid Instagramu</span></div></div>
+    <div class="rev"><p>Super byly zpětné vazby účastnic na splněné úkoly. Díky tomu teď mohu svůj styl poskládat tak, aby celý profil vystihoval to, co chci předat.</p><div class="who">Markéta<span>@marketa.betani.besperatova · Vylaď si vizuál</span></div></div>
+  </div>
+</div></section>
+
+<!-- FIT -->
+<section id="pro-koho"><div class="wrap">
+  <div class="center"><div class="kicker">Upřímně</div><div class="rule"></div><h2>Pro koho výzvy jsou <em>a pro koho ne</em></h2></div>
+  <div class="fit-grid">
+    <div class="fit yes"><h3>Jsou pro tebe, když…</h3><ul>
+      <li>tvoříš rukama a prodáváš, nebo chceš prodávat, přes Instagram,</li>
+      <li>chceš malé kroky, jejichž výsledek uvidíš hned na profilu,</li>
+      <li>stojíš o zpětnou vazbu od člověka, ne jen o nahrané video,</li>
+      <li>najdeš si 20–30 minut denně, klidně až večer.</li>
+    </ul></div>
+    <div class="fit no"><h3>Nejsou pro tebe, když…</h3><ul>
+      <li>hledáš trik, po kterém se ti za týden zaplní schránka,</li>
+      <li>chceš, aby to někdo udělal za tebe. Na to je moje <a href="https://skami.cz" target="_blank" rel="noopener">osobní spolupráce</a>,</li>
+      <li>nechceš na svém profilu nic měnit, jen se inspirovat.</li>
+    </ul></div>
+  </div>
+</div></section>
+
+<!-- HOW -->
+<section style="background:var(--mauve-pale)" id="prubeh"><div class="wrap">
+  <div class="center"><div class="kicker">Jak výzva probíhá</div><div class="rule"></div><h2>Jednoduchý rytmus, který zvládneš <em>i v nabitém týdnu</em></h2></div>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h3>Přihlásíš se</h3><p>Vyplníš formulář a místo ti podrží platba. Skupiny jsou malé, 10–12 tvůrkyň.</p></div>
+    <div class="step"><div class="n">2</div><h3>Přidáš se na Telegram</h3><p>Výzva běží v uzavřené skupině na Telegramu. Den před startem ti přijde pozvánka a k ní <a href="telegram-navod.html">krátký návod</a>.</p></div>
+    <div class="step"><div class="n">3</div><h3>Každé ráno úkol</h3><p>Konkrétní úkol a krátké video, proč na něm záleží. Večer tip navíc a prostor na dotazy.</p></div>
+    <div class="step"><div class="n">4</div><h3>Ke všemu zpětná vazba</h3><p>Na každý tvůj výstup se podívám a napíšu ti, co funguje a co doladit. Ne obecně, přímo pro tvůj profil.</p></div>
+  </div>
+  <div class="get"><span><b>Odneseš si</b></span><span>PDF s teorií</span><span>certifikát o účasti</span><span>hotové věci pro svůj profil</span><span>#znackaodzakladu</span></div>
+</div></section>
+
+<!-- QUIZ -->
+<section id="kviz"><div class="narrow">
+  <div class="center"><div class="kicker">Kterou vybrat?</div><div class="rule"></div><h2>Najdi svou <em>zastávku</em></h2><p class="lead">Šest otázek popořadě, od základů nahoru. Kde poprvé odpovíš „ne“, tam je tvoje výzva.</p></div>
+  <div class="quiz-box">
+    <div class="qprog"><div id="qbar"></div></div>
+    <div id="qwrap"></div>
+  </div>
+</div></section>
+
+<!-- ABOUT -->
+<section class="about" style="background:#fff"><div class="wrap"><div class="grid">
+  <img src="miska.jpg" alt="Miška, Ing. Michaela Skalková">
+  <div>
+    <div class="kicker">Kdo tě provede</div>
+    <h2>Ahoj, jsem <em>Miška</em></h2>
+    <p>Jsem stavařka, která se stala brand designérkou. Šest let jsem projektovala rodinné domy, dnes pod značkou <a href="https://skami.cz" target="_blank" rel="noopener">Skami Design</a> stavím značky pro začínající tvůrkyně a spoluvedu komunitu <strong>Rosteme spolu</strong>.</p>
+    <p>Na značku se pořád dívám jako na stavbu: nejdřív základy, pak zdi, nakonec fasáda. A vím, jaké to je budovat podnikání po večerech a mezi péčí o rodinu. Proto je každá výzva poskládaná z malých denních kroků.</p>
+    <p>Ve výzvách nedostaneš nahrané video a šablonu. Dostaneš mě: každou tvou práci si projdu a napíšu ti, co doladit.</p>
+    <div class="sig">Miška</div>
+  </div>
+</div></div></section>
+
+<!-- LEAD MAGNET -->
+<section class="lm" id="pruvodce"><div class="wrap"><div class="grid">
+  <div>
+    <div class="kicker" style="color:var(--mint)">Průvodce zdarma</div>
+    <h2>Krásný produkt <em>nestačí.</em></h2>
+    <p>Projdi šest zastávek, kterými jde každá zákaznice, než u tebe nakoupí. U každé najdeš příklad, jak to vypadá, když to funguje a když ne, a jeden tip, který uděláš ještě dnes.</p>
+  </div>
+  <div class="lm-box">
+    <!-- Ecomail formulář: Značka od základů · průvodce (zobrazí se jen na živém webu) -->
+    <script>
+      (function (w,d,s,o,f,js,fjs) {
+        w['ecm-widget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+        js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+        js.id = '6-3fdfd544852ed7431aa64f3b9481afb9'; js.dataset.a = 'skamidesign'; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+      }(window, document, 'script', 'ecmwidget', 'https://d70shl7vidtft.cloudfront.net/widget.js'));
+    </script>
+    <div id="f-6-3fdfd544852ed7431aa64f3b9481afb9" class="ecm-form"></div>
+    <small>Pošlu ti průvodce e-mailem a občas tip nebo novinku o výzvách. Odhlásit se můžeš jedním klikem. <a href="gdpr.html" style="color:var(--mint-pale)">Ochrana osobních údajů</a></small>
+  </div>
+</div></div></section>
+
+<!-- REGISTER -->
+<section class="register" id="registrace"><div class="narrow">
+  <div class="kicker" style="color:var(--mint)">Rezervace</div>
+  <h2>Rezervuj si <em>místo</em></h2>
+  <p class="lead" id="regLead"></p>
+  <form class="reg-form" action="https://formspree.io/f/xzdlojwl" method="POST" id="regForm">
+    <input type="hidden" name="_subject" value="Nová registrace · Značka od základů">
+    <input type="hidden" name="kolo" id="koloField" value="">
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+    <div><label class="f" for="regSel">Výzva</label><select id="regSel" name="vyzva"></select></div>
+    <div class="two">
+      <div><label class="f" for="jmeno">Jméno</label><input type="text" id="jmeno" name="jmeno" placeholder="Tvoje jméno" required></div>
+      <div><label class="f" for="email">E-mail</label><input type="email" id="email" name="email" placeholder="tvuj@email.cz" required></div>
+    </div>
+    <div><label class="f" for="ig">Instagram profil</label><input type="text" id="ig" name="instagram" placeholder="@tvujprofil"></div>
+    <div><label class="f" for="vzkaz">S čím teď nejvíc bojuješ? <span style="font-weight:400;color:var(--muted)">(nepovinné)</span></label><textarea id="vzkaz" name="vzkaz" rows="3" placeholder="Pomůže mi to připravit zpětnou vazbu přímo pro tebe."></textarea></div>
+    <div class="consent"><input type="checkbox" id="souhlas" name="souhlas" value="ano" required><label for="souhlas">Souhlasím se <a href="gdpr.html" target="_blank" rel="noopener">zpracováním osobních údajů</a> a <a href="vop-vyzvy.html" target="_blank" rel="noopener">podmínkami účasti</a>.</label></div>
+    <button class="btn btn-dark" type="submit">Odeslat registraci</button>
+    <p style="font-size:14.5px;color:var(--muted)">Registrace tě k ničemu nezavazuje. Ozvu se ti e-mailem s potvrzením a platebními údaji, místo se drží zaplacením.</p>
+    <div class="thanks" id="regThanks">Mám tě! Registrace dorazila. Ozvu se ti e-mailem s potvrzením a dalšími kroky, mrkni prosím i do hromadné pošty.</div>
+  </form>
+</div></section>
+
+<!-- FAQ -->
+<section id="faq"><div class="narrow">
+  <div class="center"><div class="kicker">Časté otázky</div><div class="rule"></div><h2>Než se <em>přihlásíš</em></h2></div>
+  <div style="margin-top:30px">
+    <details><summary>Kolik času mi výzva denně zabere?</summary><p>Počítej s 20–30 minutami. Úkoly jsou konkrétní a malé. Smyslem je udělat každý den jeden krok, ne strávit u Instagramu celý večer.</p></details>
+    <details><summary>Co když některý den nestihnu?</summary><p>Nic se neděje. Úkoly i videa zůstávají ve skupině, takže si den doženeš vlastním tempem. Většina holek dohání o víkendu a funguje to.</p></details>
+    <details><summary>Potřebuju nějaké placené nástroje?</summary><p>Ne. Stačí mobil a Instagram. Tam, kde pracujeme s Canvou nebo s AI, si vystačíš s verzí zdarma.</p></details>
+    <details><summary>Musím jít výzvy popořadě?</summary><p>Nemusíš, každá funguje samostatně. Pořadí „od základů“ je jen doporučení pro ty, které neví, kde začít. Poradí ti i kvíz výš na stránce.</p></details>
+    <details><summary>Jak probíhá platba?</summary><p>Po registraci ti pošlu e-mail s platebními údaji. Místo ve výzvě se drží zaplacením, skupiny jsou malé.</p></details>
+    <details><summary>Proč u termínů nejsou napsané výzvy?</summary><p>Protože je chci dělat podle toho, co opravdu potřebujete. Termíny začátků jsou dané a výzvu do nich vybírá hlasování. Jakmile je výzva pro termín jasná, otevřu registraci a hlasující se to dozví jako první.</p></details>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>© 2026 Michaela Skalková · Skami Design</div>
+  <div><a href="https://www.instagram.com/znacka_od_zakladu/" target="_blank" rel="noopener">@znacka_od_zakladu</a> · <a href="https://www.instagram.com/skalkova.michaela/" target="_blank" rel="noopener">@skalkova.michaela</a> · <a href="https://skami.cz" target="_blank" rel="noopener">skami.cz</a> · <a href="gdpr.html">ochrana osobních údajů</a> · <a href="vop-vyzvy.html">podmínky účasti</a></div>
+</div></footer>
+
+<script>
+/* ====== DATA: tady upravuj výzvy, ceny a termíny ====== */
+const STAGES = [
+  {id:'zaklady', num:'01 · Základy', name:'Základy', what:'Zákaznice pochopí, kdo jsi a co prodáváš.'},
+  {id:'zdi', num:'02 · Zdi', name:'Zdi', what:'Najde tě a pozná tě. Ne jen tvoje výrobky.'},
+  {id:'fasada', num:'03 · Fasáda', name:'Fasáda', what:'Zapamatuje si tě na první scroll.'},
+  {id:'naradi', num:'04 · Nářadí', name:'Nářadí', what:'Zvládneš to všechno bez nočních směn.'}
+];
+const CH = [
+  {id:'znacka', stage:'zaklady', img:'vyzva-07.jpg', name:'Najdi svou značku', price:'590 Kč', days:'5 dní', cap:'max 10 míst',
+   promise:'Za 5 dní budeš umět jednou větou říct, čím je tvoje tvorba jiná a pro koho je.',
+   pro:['neumíš říct, čím je tvoje tvorba jiná','přitahuješ lajky, ale ne zákaznice','ceny nastavuješ pocitově a pak lituješ'],
+   co:['pojmenuješ, co děláš a proč','najdeš, čím se lišíš od ostatních','popíšeš svou ideální zákaznici','sestavíš příběh své značky','nastavíš ceny, které dávají smysl','propojíš značku s profilem'],
+   leave:'základ značky, na kterém postavíš všechno ostatní: příběh, zákaznici i ceny.'},
+  {id:'uklid', stage:'zaklady', img:'vyzva-01.jpg', name:'Úklid Instagramu', price:'590 Kč', days:'7 dní', cap:'max 12 míst',
+   promise:'Za 7 dní máš profil, který cizímu člověku za 3 vteřiny řekne, co tvoříš a jak si objednat.',
+   pro:['tvůj profil nevypadá tak, jak chceš','nevíš, co a kdy zveřejnit','Instagram tě spíš stresuje, než baví'],
+   co:['audit profilu: jak tě vidí ostatní','bio, profilovka a highlights, které vedou k objednávce','pojmenuješ, co nefunguje','zmapuješ formáty, které ti chybí','definuješ 3 obsahové pilíře','sestavíš první obsahový plán'],
+   leave:'uklizený profil a plán obsahu. Irena po něm zvedla zhlédnutí z 12 na 20 tisíc měsíčně.'},
+  {id:'ukaz', stage:'zdi', img:'vyzva-02.jpg', name:'Ukaž se světu', price:'690 Kč', days:'7 dní', cap:'max 10 míst',
+   promise:'Za 7 dní natočíš svůj první reel a zjistíš, že kamera nekouše.',
+   pro:['natočit sebe ti přijde nemyslitelné','tvůj profil je jen o výrobcích, ne o tobě','reels odkládáš, protože „na to nejsi“'],
+   co:['první video jen pro sebe, nikdo ho neuvidí','voiceover přes záběr tvého výrobku','první věta na kameru, ve skupině a v bezpečí','přirozené stories ze zákulisí tvorby','natočíš a zveřejníš svůj první reel'],
+   leave:'první reel venku a odvaha ukázat, kdo za tvými výrobky stojí.'},
+  {id:'stories', stage:'zdi', img:'vyzva-04.jpg', name:'Ovládni Stories', price:'590 Kč', days:'7 dní', cap:'max 12 míst',
+   promise:'Za 7 dní poskládáš první stories kampaň, která vede od zaujetí až k poptávce.',
+   pro:['nevíš, co do stories dávat','přidáváš je, ale nemají odezvu','stories bereš jako povinnost, ne příležitost'],
+   co:['začneš obyčejnou snídaňovou story','poznáš typy stories a co který umí','ankety, otázky a kvízy, které vedou k reakcím','zákulisí, které prodává','mini kampaň z 5 stories s výzvou k akci'],
+   leave:'stories rytmus, který udržíš, a první kampaň za sebou.'},
+  {id:'vizual', stage:'fasada', img:'vyzva-03.jpg', name:'Vylaď si vizuál', price:'790 Kč', days:'9 dní', cap:'max 12 míst',
+   promise:'Za 9 dní máš barvy, písma a pravidla, díky kterým je tvůj profil poznat na první scroll.',
+   pro:['každý tvůj příspěvek vypadá jinak','nevíš, které barvy a písma jsou „ty tvoje“','grafiku řešíš pokaždé od nuly'],
+   co:['rychlý audit vizuálu','barevná paleta, která k tobě sedí','dvojice písem pro grafiky i videa','sladíš fotky, nové i ty starší','moodboard tvé značky','tahák pro každý typ příspěvku','přeladíš 3 své příspěvky'],
+   leave:'mini brand manuál, podle kterého tvoříš bez grafika.'},
+  {id:'canva', stage:'fasada', img:'vyzva-05.jpg', name:'Zvládni Canvu', price:'690 / 990 Kč', days:'6 nebo 10 dní', cap:'max 10 míst',
+   promise:'Za 10 dní máš vlastní sadu šablon a nová grafika ti zabere 10 minut místo hodiny.',
+   pro:['každá grafika ti trvá věčnost','výsledky nevypadají, jak by sis přála','o šablonách slýcháš, ale nevíš, jak na ně'],
+   co:['zorientuješ se v Canvě bez chaosu','nastavíš si svoje barvy a písma','první vlastní šablona na příspěvek','šablony na stories a carousel','triky, které šetří minuty denně','vlastní sada šablon'],
+   leave:'sada šablon v tvé značce a video návody, které ti zůstanou.'},
+  {id:'ai', stage:'naradi', img:'vyzva-06.jpg', name:'Zkroť AI', price:'590 Kč', days:'7 dní', cap:'max 12 míst',
+   promise:'Za 7 dní máš AI pomocníka, který píše tvým hlasem, ne jako robot.',
+   pro:['AI zkoušíš, ale výsledky nic moc','texty k příspěvkům píšeš hodinu','máš pocit, že ti ujíždí vlak'],
+   co:['nastavíš si AI pomocníka zdarma','naučíš ho psát tvým hlasem','texty k příspěvkům a stories za pár minut','zásobárna nápadů na obsah','plánování týdne s AI','vlastní AI rutina'],
+   leave:'vlastní prompt na svou značku. Ne hotovou šablonu, ale nástroj, který umíš ovládat.'}
+];
+/* pevný termín (registrace otevřená) */
+const NEXT = {id:'ukaz', date:'16.–22. 11.', open:true};
+/* další termíny začátků, výzvu do nich vybere hlasování */
+const SLOTS = ['28. 11.','9. 12.','4. 1.','16. 1.','30. 1.'];
+/* hlasování: kandidáti (id výzvy nebo vlastní položka) */
+const VOTE = [
+  {id:'uklid'},{id:'stories'},{id:'ai'},{id:'canva'},{id:'vizual'},{id:'znacka'},
+  {id:'claude', name:'Grafika s Claudem', sub:'novinka'}
+];
+/* ruční stav hlasů: použije se, dokud není napojené /api/vote (pak se počítá samo) */
+const VOTES_MANUAL = {uklid:0, stories:0, ai:0, canva:0, vizual:0, znacka:0, claude:0};
+
+/* ====== RENDER ====== */
+const byId = id => CH.find(c=>c.id===id);
+document.getElementById('stages').innerHTML = STAGES.map(s=>`
+  <div class="stage"><div><div class="num">${s.num}</div><div class="name">${s.name}</div><div class="what">${s.what}</div></div>
+  <div class="stage-ch">${CH.filter(c=>c.stage===s.id).map(c=>`
+    <a class="ch-card" href="#${c.id}"><img src="${c.img}" alt=""><div class="b"><div class="t">${c.name}</div><div class="p">${c.promise}</div><div class="m">${c.days} · ${c.price}</div></div></a>`).join('')}
+  </div></div>`).join('');
+
+document.getElementById('detailList').innerHTML = CH.map(c=>{
+  const st = STAGES.find(s=>s.id===c.stage);
+  const isNext = NEXT.id===c.id;
+  const when = isNext ? `<span>${NEXT.date}</span>` : `<span>termín podle hlasování</span>`;
+  const act = isNext && NEXT.open ? `<a class="btn btn-dark" href="#registrace">Chci místo</a>`
+    : `<a class="btn btn-dark" href="#terminy" data-vote="${c.id}">Hlasovat pro tuhle výzvu</a>`;
+  return `<article class="detail" id="${c.id}" data-id="${c.id}"><img src="${c.img}" alt="${c.name}">
+  <div class="b"><div class="stg">${st.name}</div><h3>${c.name}</h3><p class="promise">${c.promise}</p>
+  <div class="meta"><span class="price">${c.price}</span><span>${c.days}</span><span>${c.cap}</span>${when}</div>
+  <details class="more"><summary>Zjistit víc o výzvě</summary>
+  <div class="cols"><div><h4>Je pro tebe, pokud</h4><ul>${c.pro.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+  <div><h4>Co uděláme</h4><ul>${c.co.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>
+  <div class="leave"><b>S čím odejdeš:</b> ${c.leave}</div></details>
+  <div class="actions">${act}<small>osobní zpětná vazba ke každému úkolu</small></div></div></article>`;
+}).join('');
+
+/* slider */
+const track = document.getElementById('detailList');
+const slides = [...track.children];
+document.getElementById('dots').innerHTML = slides.map((s,i)=>`<button aria-label="${CH[i].name}" data-i="${i}"></button>`).join('');
+const dots = [...document.querySelectorAll('#dots button')];
+let cur = 0;
+function go(i){ cur=(i+slides.length)%slides.length; track.scrollTo({left:slides[cur].offsetLeft-track.offsetLeft,behavior:'smooth'}); mark(); }
+function mark(){ dots.forEach((d,i)=>d.classList.toggle('on',i===cur)); }
+document.getElementById('sPrev').onclick=()=>go(cur-1);
+document.getElementById('sNext').onclick=()=>go(cur+1);
+dots.forEach(d=>d.onclick=()=>go(+d.dataset.i));
+let st; track.addEventListener('scroll',()=>{clearTimeout(st);st=setTimeout(()=>{cur=Math.round(track.scrollLeft/track.clientWidth);mark();},80);});
+mark();
+/* karty ve „stavbě“ otevřou správný slajd */
+document.querySelectorAll('.ch-card').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault(); const id=a.getAttribute('href').slice(1);
+  document.getElementById('detail').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>go(CH.findIndex(c=>c.id===id)),350);
+}));
+
+const n = byId(NEXT.id);
+document.getElementById('nextBig').innerHTML = `<div class="kicker">${NEXT.open?'Nejbližší kolo · registrace otevřená':'Nejbližší kolo'}</div>
+  <h3>${n.name}</h3><p>${n.promise}</p>
+  <div class="meta"><span class="price">${n.price}</span><span>${NEXT.date}</span><span>${n.days}</span><span>${n.cap}</span></div>
+  <div><a class="btn btn-mint" href="#registrace">Chci místo</a></div>`;
+document.getElementById('thenList').innerHTML = `<div class="item"><div class="d">Další začátky</div><div class="t">${SLOTS.join(' · ')}</div><div class="s">Výzvu do každého termínu vybírá hlasování níž. Nejvíc hlasů = nejbližší volný termín.</div></div>
+  <div class="item" id="leader"></div>`;
+
+/* registrace: jen pevný termín */
+const regSel = document.getElementById('regSel');
+const regList = [NEXT];
+regSel.innerHTML = regList.map(r=>`<option value="${r.id}">${byId(r.id).name} · ${r.date}</option>`).join('');
+function setReg(id){
+  const c = byId(id), r = regList.find(x=>x.id===id);
+  regSel.value = id;
+  document.getElementById('koloField').value = `${c.name} · ${r.date} · ${c.price}`;
+  document.getElementById('regLead').textContent = `${c.name} · ${r.date} · ${c.days} · ${c.price}. Po odeslání se ti ozvu s potvrzením a platebními údaji.`;
+}
+setReg(NEXT.id);
+
+/* hlasování s průběžnými výsledky */
+let votes = {...VOTES_MANUAL}, live = false;
+const vName = v => v.name || byId(v.id).name;
+function renderBars(){
+  const total = Object.values(votes).reduce((a,b)=>a+b,0);
+  const checked = (document.querySelector('input[name=hlas]:checked')||{}).value;
+  document.getElementById('bars').innerHTML = VOTE.map(v=>{
+    const n = votes[v.id]||0, pct = total? Math.round(n/total*100):0;
+    return `<label class="bar"><input type="radio" name="hlas" value="${vName(v)}" data-id="${v.id}" ${checked===vName(v)?'checked':''} required>
+      <span class="fill" style="width:${pct}%"></span><span class="lab">${vName(v)}${v.sub?`<small>${v.sub}</small>`:''}</span><span class="pct">${total? pct+' %':''}</span></label>`;
+  }).join('');
+  document.getElementById('voteNote').textContent = total ? `Zatím hlasovalo ${total} tvůrkyň.${live?'':' Stav aktualizuju ručně.'}` : 'Hlasování právě začalo, buď první.';
+  const top = [...VOTE].sort((a,b)=>(votes[b.id]||0)-(votes[a.id]||0))[0];
+  document.getElementById('leader').innerHTML = total && votes[top.id] ? `<div class="d">Zatím vede · kandidát na ${SLOTS[0]}</div><div class="t">${vName(top)}</div><div class="s">Hlasování ale pořád běží.</div>`
+    : `<div class="d">Termín ${SLOTS[0]}</div><div class="t">Rozhodne tvůj hlas</div><div class="s">Zatím nikdo nehlasoval.</div>`;
+}
+async function loadVotes(){
+  try{ const r = await fetch('/api/vote'); if(r.ok){ const d = await r.json(); votes = {...VOTES_MANUAL, ...d}; live = true; } }catch(e){}
+  renderBars();
+}
+renderBars(); loadVotes();
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-vote]'); if(!a) return;
+  setTimeout(()=>{const i=document.querySelector(`input[data-id="${a.dataset.vote}"]`); if(i) i.checked=true;},50);
+});
+
+/* odeslání přes Formspree bez opuštění stránky */
+function ajax(formId, thanksId){
+  const f = document.getElementById(formId);
+  f.addEventListener('submit', async e=>{
+    e.preventDefault();
+    const t=document.getElementById(thanksId);
+    const fail=()=>{t.textContent='Odeslání se nepovedlo. Zkus to prosím znovu, nebo mi napiš zprávu na Instagram @znacka_od_zakladu.';t.style.display='block';};
+    try{
+      const r = await fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
+      if(r.ok){ t.style.display='block'; f.querySelectorAll('button[type=submit]').forEach(b=>b.disabled=true); }
+      else fail();
+    }catch(err){ fail(); }
+  });
+}
+ajax('regForm','regThanks'); ajax('voteForm','voteThanks');
+
+
+document.getElementById('voteForm').addEventListener('submit',async()=>{
+  const i=document.querySelector('input[name=hlas]:checked'); if(!i) return;
+  try{ const r=await fetch('/api/vote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:i.dataset.id})});
+    if(r.ok){ votes={...VOTES_MANUAL,...(await r.json())}; live=true; renderBars(); return; } }catch(e){}
+  votes[i.dataset.id]=(votes[i.dataset.id]||0)+1; renderBars();
+});
+
+/* kvíz: první „ne“ určuje výzvu */
+const Q = [
+  {q:'Umím jednou větou říct, pro koho tvořím a čím jsem jiná?', h:'Ne „pro všechny ženy“, ale konkrétní člověk v konkrétní situaci.', ch:'znacka'},
+  {q:'Pozná cizí člověk z mého profilu do 3 vteřin, co prodávám a jak si objednat?', h:'Bio, highlights a připnuté příspěvky ukazují jednu jasnou cestu.', ch:'uklid'},
+  {q:'Ukazuju na profilu i sebe, ne jen hotové výrobky?', h:'Tvář, ruce při práci, hlas, zákulisí.', ch:'ukaz'},
+  {q:'Dávám do stories i něco jiného než nabídku?', h:'Zákulisí, otázky, ankety. A reagují na ně lidé.', ch:'stories'},
+  {q:'Vypadá můj feed jako jedna značka?', h:'Stejná písma, barvy a styl fotek. Grafiku nedělám pokaždé od nuly.', ch:'vizual'},
+  {q:'Zvládám obsah tvořit pravidelně a bez stresu?', h:'Ne nárazově, když mám zrovna náladu nebo volný večer.', ch:'ai'}
+];
+let qi = 0;
+function renderQ(){
+  const w = document.getElementById('qwrap');
+  document.getElementById('qbar').style.width = (qi/Q.length*100)+'%';
+  if(qi>=Q.length){ w.innerHTML = `<div class="qres"><div class="kicker">Paráda</div><h3>Základy máš postavené.</h3><p>Možná je čas na další krok, třeba Zvládni Canvu, nebo výzva, která ti v hlasování chybí.</p><div class="qbtns"><a class="btn btn-dark" href="#detail" onclick="setTimeout(()=>go(CH.findIndex(x=>x.id===\'canva\')),350)">Zvládni Canvu</a><button class="btn btn-ghost" onclick="qi=0;renderQ()">Zkusit znovu</button></div></div>`; return; }
+  const x = Q[qi];
+  w.innerHTML = `<div class="kicker">Otázka ${qi+1} z ${Q.length}</div><div class="qq">${x.q}</div><div class="qhint">${x.h}</div>
+   <div class="qbtns"><button class="btn btn-dark" id="qy">Ano, to mám</button><button class="btn btn-ghost" id="qn">Ne, tady to drhne</button></div>`;
+  document.getElementById('qy').onclick=()=>{qi++;renderQ();};
+  document.getElementById('qn').onclick=()=>{
+    const c = byId(x.ch); document.getElementById('qbar').style.width='100%';
+    w.innerHTML = `<div class="qres"><div class="kicker">Tvoje zastávka</div><h3>${c.name}</h3><p>${c.promise}</p>
+     <div class="qbtns"><a class="btn btn-dark" href="#detail" onclick="setTimeout(()=>go(CH.findIndex(x=>x.id===\'${c.id}\')),350)">Co v ní uděláme</a><button class="btn btn-ghost" onclick="qi=0;renderQ()">Zkusit znovu</button></div></div>`;
+  };
+}
+renderQ();
+</script>
+</body>
+</html>

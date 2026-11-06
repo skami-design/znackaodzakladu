@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jak na Telegram — Rostu s Miškou</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16211a;--ink-soft:#2b362e;--mint:#9fd4b0;--mint-pale:#d5f0de;
+    --off:#fdfefd;--muted:#5c6a5f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Source Sans 3',sans-serif;color:var(--ink);background:var(--off);line-height:1.7;font-size:16.5px;}
+  nav{background:rgba(253,254,253,.92);border-bottom:1px solid #e7efe9;}
+  nav .wrap{max-width:800px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{font-family:'Playfair Display',serif;font-weight:600;font-size:20px;color:var(--ink);text-decoration:none;}
+  .brand em{color:var(--mint);font-style:italic;}
+  nav a.back{color:var(--muted);text-decoration:none;font-size:15px;}
+  nav a.back:hover{color:var(--ink);}
+  main{max-width:800px;margin:0 auto;padding:56px 24px 80px;}
+  h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,38px);font-weight:600;margin-bottom:6px;}
+  .subtitle{color:var(--muted);font-size:15px;margin-bottom:40px;}
+  h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;margin:40px 0 14px;}
+  h3{font-size:16px;font-weight:700;margin:18px 0 8px;color:var(--ink);}
+  p{margin-bottom:14px;color:var(--ink-soft);}
+  ol,ul{margin:0 0 14px 22px;color:var(--ink-soft);}
+  li{margin-bottom:8px;}
+  a{color:#4E7A60;}
+  .box{background:var(--mint-pale);border-radius:14px;padding:18px 22px;margin:16px 0;font-size:15px;color:var(--ink-soft);}
+  .box strong{color:var(--ink);}
+  .step{border-left:3px solid var(--mint);padding:20px 24px;margin:24px 0;background:#f8fdf9;border-radius:0 12px 12px 0;}
+  .step-num{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mint);margin-bottom:6px;}
+  .download-btns{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0;}
+  .download-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;transition:opacity .15s;}
+  .download-btn:hover{opacity:.85;}
+  .btn-ios{background:#000;color:#fff;}
+  .btn-android{background:#34A853;color:#fff;}
+  .btn-web{background:#0088cc;color:#fff;}
+  footer{border-top:1px solid #e7efe9;padding:28px 24px;text-align:center;color:var(--muted);font-size:14px;}
+  footer a{color:#4E7A60;text-decoration:none;}
+  @media(max-width:600px){
+    .download-btns{flex-direction:column;}
+    .download-btn{justify-content:center;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="vyzvy.html">Rostu <em>s Miškou</em></a>
+    <a class="back" href="vyzvy.html">← zpět na výzvy</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Jak na Telegram</h1>
+  <p class="subtitle">Krátký návod, jak si stáhnout aplikaci, vytvořit účet a přidat se do naší skupiny.</p>
+
+  <!-- KROK 1 -->
+  <div class="step">
+    <div class="step-num">Krok 1</div>
+    <h2 style="margin:0 0 12px;">Stažení aplikace</h2>
+
+    <h3>Na telefonu</h3>
+    <p>Otevři <strong>App Store</strong> (iPhone) nebo <strong>Google Play</strong> (Android) a do vyhledávání napiš „Telegram". Nainstaluj aplikaci se stejnou ikonkou — bílý papírový panáček v modrém kolečku.</p>
+
+    <div class="download-btns">
+      <a class="download-btn btn-ios" href="https://apps.apple.com/app/telegram-messenger/id686449807" target="_blank" rel="noopener">
+        🍎 App Store (iPhone)
+      </a>
+      <a class="download-btn btn-android" href="https://play.google.com/store/apps/details?id=org.telegram.messenger" target="_blank" rel="noopener">
+        ▶ Google Play (Android)
+      </a>
+    </div>
+
+    <h3>Na počítači (nepovinné)</h3>
+    <p>Pokud chceš Telegram i na počítači, stáhni si ho z <a href="https://telegram.org/desktop" target="_blank" rel="noopener">telegram.org/desktop</a>, nebo použij verzi přímo v prohlížeči na <a href="https://web.telegram.org" target="_blank" rel="noopener">web.telegram.org</a> — nic se nemusí instalovat.</p>
+  </div>
+
+  <!-- KROK 2 -->
+  <div class="step">
+    <div class="step-num">Krok 2</div>
+    <h2 style="margin:0 0 12px;">Vytvoření účtu</h2>
+    <ol>
+      <li>Otevři aplikaci a klikni na <strong>„Start Messaging"</strong> / „Začít".</li>
+      <li>Zadej své <strong>telefonní číslo</strong> — na něj ti přijde ověřovací SMS kód.</li>
+      <li>Opiš kód ze zprávy do aplikace.</li>
+      <li>Vyplň <strong>jméno</strong> (a případně příjmení) — právě tohle jméno uvidí ostatní ve skupině, takže klidně napiš i své „pracovní" jméno.</li>
+      <li>Nahrání profilové fotky je nepovinné, ale usnadní ostatním poznat, kdo je kdo 🙂</li>
+    </ol>
+    <div class="box">
+      💡 <strong>Telegram nepotřebuje žádné heslo</strong> — při dalším přihlášení stačí znovu zadat telefonní číslo a kód, který ti přijde SMS zprávou.
+    </div>
+  </div>
+
+  <!-- KROK 3 -->
+  <div class="step">
+    <div class="step-num">Krok 3</div>
+    <h2 style="margin:0 0 12px;">Přihlášení (pokud už účet máš)</h2>
+    <ol>
+      <li>Otevři aplikaci Telegram.</li>
+      <li>Zadej stejné telefonní číslo jako při registraci.</li>
+      <li>Opiš kód, který ti přijde SMS zprávou.</li>
+    </ol>
+    <p>Pokud sis dřív nastavila dvoufázové ověření (2FA), aplikace tě požádá ještě o heslo, které sis tehdy zvolila.</p>
+  </div>
+
+  <!-- KROK 4 -->
+  <div class="step">
+    <div class="step-num">Krok 4</div>
+    <h2 style="margin:0 0 12px;">Připojení do naší skupiny</h2>
+    <ol>
+      <li>Klikni na <strong>odkaz do skupiny</strong>, který jsi dostala ode mě.</li>
+      <li>Otevře se Telegram a ukáže se náhled skupiny — jméno, počet členů, popis.</li>
+      <li>Klikni na tlačítko <strong>„Připojit se"</strong> / „Join Group".</li>
+      <li>Hotovo — od teď uvidíš zprávy ve skupině a můžeš do ní i sama psát. 🎉</li>
+    </ol>
+    <div class="box">
+      💡 Odkaz do skupiny funguje jen v Telegramu — pokud ho otevřeš přímo v mobilu, aplikace se ti sama nabídne.
+    </div>
+  </div>
+
+  <!-- KROK 5 -->
+  <div class="step">
+    <div class="step-num">Krok 5</div>
+    <h2 style="margin:0 0 12px;">Základní orientace</h2>
+    <ul>
+      <li><strong>Psaní zprávy:</strong> klepni do pole dole, napiš text a odešli šipkou vpravo.</li>
+      <li><strong>Reakce:</strong> podrž prst na zprávě (nebo na PC klikni pravým tlačítkem) a vyber emoji.</li>
+      <li><strong>Vyhledávání starších zpráv:</strong> nahoře je lupa — napiš klíčové slovo a najdeš i zprávu starou pár týdnů.</li>
+      <li><strong>Notifikace:</strong> pokud ti skupina píše moc často, klepni na její název nahoře → ikonka zvonečku → ztlum oznámení. Nemusíš skupinu opouštět, jen ztišíš upozornění.</li>
+    </ul>
+  </div>
+
+  <div class="box" style="margin-top:32px;text-align:center;">
+    Kdyby cokoliv nešlo, napiš mi — ráda pomůžu 💛<br>
+    <a href="https://www.instagram.com/skalkova.michaela/" target="_blank" rel="noopener">@skalkova.michaela</a> &nbsp;·&nbsp; <a href="mailto:ska-mi@seznam.cz">ska-mi@seznam.cz</a>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 Michaela Skalková · Skami Design · <a href="vyzvy.html">Rostu s Miškou</a> · <a href="gdpr.html">Ochrana osobních údajů</a>
+</footer>
+
+</body>
+</html>
