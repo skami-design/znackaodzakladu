@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Značka od základů · krátké výzvy pro handmade tvůrkyně</title>
 <meta name="description" content="Krátké výzvy pro handmade tvůrkyně: profil, obsah, Stories, vizuál a AI. 20–30 minut denně, malé skupiny a osobní zpětná vazba od Mišky.">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -44,8 +45,10 @@ h1 em,h2 em,h3 em{font-style:italic;color:var(--mauve)}
 /* nav */
 nav{position:sticky;top:0;z-index:50;background:rgba(251,248,245,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-family:var(--serif);font-size:20px;font-weight:600;text-decoration:none}
-.logo span{font-style:italic;color:var(--plum-2)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-zz{height:38px;width:auto}
+.logo-word{height:30px;width:auto}
+@media(max-width:420px){.logo-word{height:24px}.logo-zz{height:32px}}
 nav .links{display:flex;gap:26px;align-items:center;font-size:15px;font-weight:600}
 nav .links a{text-decoration:none;color:var(--muted)}
 nav .links a.btn{color:var(--mint-pale);padding:10px 20px;font-size:14px}
@@ -276,20 +279,32 @@ blockquote cite{display:block;font-family:var(--sans);font-style:normal;font-siz
 
 /* Ecomail formulář: sladění se stránkou */
 .ecm-form{min-height:60px}
-.ecm-form *{font-family:var(--sans)!important;box-sizing:border-box}
-.ecm-form form,.ecm-form > div{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;max-width:none!important}
-.ecm-form h1,.ecm-form h2,.ecm-form h3,.ecm-form h4{font-family:var(--serif)!important;color:#fff!important}
-.ecm-form p,.ecm-form label,.ecm-form span{color:var(--mint-pale)!important}
-.ecm-form label{font-size:14px!important;font-weight:600!important}
-.ecm-form input[type=text],.ecm-form input[type=email]{width:100%!important;font-size:16px!important;padding:13px 15px!important;border:1.5px solid rgba(255,255,255,.25)!important;border-radius:12px!important;background:#fff!important;color:var(--ink)!important;margin-bottom:12px!important;height:auto!important}
+.ecm-form *{font-family:var(--sans)!important;box-sizing:border-box;background-color:transparent!important;box-shadow:none!important;text-align:left!important}
+.ecm-form form,.ecm-form div{border:0!important;padding-left:0!important;padding-right:0!important;max-width:none!important;margin-left:0!important;margin-right:0!important}
+.ecm-form div{padding-top:0!important}
+.ecm-form h1,.ecm-form h2,.ecm-form h3,.ecm-form h4,.ecm-form .ecm-hide{display:none!important}
+.ecm-form label,.ecm-form p,.ecm-form span{color:#fff!important;font-size:14px!important;font-weight:600!important}
+.ecm-form input[type=text],.ecm-form input[type=email]{width:100%!important;font-size:16px!important;padding:13px 15px!important;border:1.5px solid transparent!important;border-radius:6px!important;background-color:#fff!important;color:var(--ink)!important;margin:6px 0 14px!important;height:auto!important}
+.ecm-form input::placeholder{color:#8a948e!important}
 .ecm-form input:focus{outline:none!important;border-color:var(--mint)!important}
-.ecm-form button,.ecm-form input[type=submit]{background:var(--mint)!important;color:var(--ink)!important;border:0!important;border-radius:999px!important;padding:16px 30px!important;font-weight:600!important;font-size:16px!important;cursor:pointer!important;width:auto!important;height:auto!important;transition:transform .15s!important}
-.ecm-form button:hover,.ecm-form input[type=submit]:hover{transform:translateY(-1px)}
+.ecm-form button,.ecm-form input[type=submit]{background-color:var(--mint)!important;color:var(--ink)!important;border:0!important;border-radius:6px!important;padding:15px 28px!important;font-weight:700!important;font-size:16px!important;cursor:pointer!important;width:auto!important;height:auto!important;margin:6px 0 0!important}
+.ecm-form button:hover,.ecm-form input[type=submit]:hover{filter:brightness(1.05)}
+.ecm-form a{color:var(--mint-pale)!important;font-weight:400!important;font-size:13px!important}
 /* register */
 .register{background:var(--plum);color:#fff}
 .register h2{color:#fff}.register h2 em{color:var(--mint)}
 .register .lead{color:#f3e9ec}
-.reg-form{background:#fff;color:var(--ink);border-radius:26px;padding:36px;margin-top:36px;display:grid;gap:16px}
+.register{position:relative;overflow:hidden}
+.register .narrow{position:relative;z-index:1}
+.glow{position:absolute;border-radius:50%;z-index:0;pointer-events:none}
+.glow.g1{width:420px;height:420px;background:#9fd4b0;opacity:.8;right:calc(50% - 520px);top:300px}
+.glow.g2{width:340px;height:340px;background:#94647B;opacity:1;left:calc(50% - 520px);bottom:120px}
+.glow.g3{width:160px;height:160px;background:#d5f0de;opacity:.6;left:calc(50% - 60px);top:240px}
+@media(max-width:700px){.glow.g1{width:260px;height:260px;right:-90px;top:360px}.glow.g2{width:220px;height:220px;left:-90px;bottom:260px}.glow.g3{width:110px;height:110px;left:auto;right:40px;top:250px}}
+.reg-form{position:relative;background:linear-gradient(135deg,rgba(255,255,255,.55),rgba(255,255,255,.28));-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);color:var(--ink);border:1px solid rgba(255,255,255,.6);border-radius:26px;padding:36px;margin-top:36px;display:grid;gap:16px;box-shadow:0 30px 60px -20px rgba(30,12,22,.45),0 8px 20px rgba(30,12,22,.18),inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 0 rgba(255,255,255,.15)}
+.reg-form input[type=text],.reg-form input[type=email],.reg-form select,.reg-form textarea{background:rgba(255,255,255,.78);border-color:rgba(255,255,255,.7)}
+.reg-form label.f{color:var(--ink)}
+.reg-form .consent,.reg-form p{color:var(--ink-soft)!important}
 label.f{font-size:14px;font-weight:600;display:block;margin-bottom:6px}
 input[type=text],input[type=email],select,textarea{width:100%;font:inherit;font-size:16px;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green)}
@@ -311,15 +326,33 @@ details[open] summary::after{content:"–"}
 details p{margin-top:10px;color:var(--muted);font-size:16.5px}
 
 footer{background:var(--ink);color:#b9c5bc;font-size:14px;padding:36px 0}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
 footer a{color:var(--mint-pale);text-decoration:none}
 .todo{background:#fff3cd;color:#7a5b00;font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;letter-spacing:.04em}
+
+/* ===== pohyb ===== */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}.reveal.d5{transition-delay:.4s}
+@keyframes floatA{0%,100%{transform:translate(0,0)}50%{transform:translate(-18px,22px)}}
+@keyframes floatB{0%,100%{transform:translate(0,0)}50%{transform:translate(22px,-16px)}}
+@keyframes floatC{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(10px,14px) scale(1.08)}}
+.glow.g1{animation:floatA 11s ease-in-out infinite}
+.glow.g2{animation:floatB 13s ease-in-out infinite}
+.glow.g3{animation:floatC 9s ease-in-out infinite}
+.intro .path span{transition:background .4s,color .4s,border-color .4s,transform .4s}
+.intro .path span.on{background:var(--ink);color:var(--mint-pale);border-color:var(--ink);transform:translateY(-2px)}
+.pain{transition:transform .25s,box-shadow .25s}
+.pain:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(22,33,26,.08)}
+.ch-card{transition:background .15s,transform .25s}
+.ch-card:hover{transform:translateX(4px)}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.glow{animation:none!important}.intro .path span{transition:none}}
 </style>
 </head>
 <body>
 
 <nav><div class="wrap">
-  <a href="#" class="logo">Značka <span>od základů</span></a>
+  <a href="#" class="logo" aria-label="Značka od základů"><img src="logo-zz.png" alt="" class="logo-zz"><img src="logo-znacka.png" alt="Značka od základů" class="logo-word"></a>
   <div class="links">
     <a href="#vyzvy">Výzvy</a>
     <a href="#terminy">Termíny</a>
@@ -519,12 +552,12 @@ footer a{color:var(--mint-pale);text-decoration:none}
       }(window, document, 'script', 'ecmwidget', 'https://d70shl7vidtft.cloudfront.net/widget.js'));
     </script>
     <div id="f-6-3fdfd544852ed7431aa64f3b9481afb9" class="ecm-form"></div>
-    <small>Pošlu ti průvodce e-mailem a občas tip nebo novinku o výzvách. Odhlásit se můžeš jedním klikem. <a href="gdpr.html" style="color:var(--mint-pale)">Ochrana osobních údajů</a></small>
+    <small>Pošlu ti průvodce e-mailem a občas tip nebo novinku o výzvách. Odhlásit se můžeš jedním klikem.</small>
   </div>
 </div></div></section>
 
 <!-- REGISTER -->
-<section class="register" id="registrace"><div class="narrow">
+<section class="register" id="registrace"><div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div><div class="narrow">
   <div class="kicker" style="color:var(--mint)">Rezervace</div>
   <h2>Rezervuj si <em>místo</em></h2>
   <p class="lead" id="regLead"></p>
@@ -560,7 +593,7 @@ footer a{color:var(--mint-pale);text-decoration:none}
 </div></section>
 
 <footer><div class="wrap">
-  <div>© 2026 Michaela Skalková · Skami Design</div>
+  <div style="display:flex;align-items:center;gap:14px"><img src="logo-zz-white.png" alt="" style="height:34px;width:auto"><img src="logo-znacka-white.png" alt="Značka od základů" style="height:26px;width:auto;opacity:.9"><span style="margin-left:8px">© 2026 Michaela Skalková · Skami Design</span></div>
   <div><a href="https://www.instagram.com/znacka_od_zakladu/" target="_blank" rel="noopener">@znacka_od_zakladu</a> · <a href="https://www.instagram.com/skalkova.michaela/" target="_blank" rel="noopener">@skalkova.michaela</a> · <a href="https://skami.cz" target="_blank" rel="noopener">skami.cz</a> · <a href="gdpr.html">ochrana osobních údajů</a> · <a href="vop-vyzvy.html">podmínky účasti</a></div>
 </div></footer>
 
@@ -673,6 +706,25 @@ document.getElementById('nextBig').innerHTML = `<div class="kicker">${NEXT.open?
 document.getElementById('thenList').innerHTML = `<div class="item"><div class="d">Další začátky</div><div class="t">${SLOTS.join(' · ')}</div><div class="s">Výzvu do každého termínu vybírá hlasování níž. Nejvíc hlasů = nejbližší volný termín.</div></div>
   <div class="item" id="leader"></div>`;
 
+
+/* Ecomail formulář: vlastní texty (widget se načte až na živém webu) */
+(function(){
+  const box=document.getElementById('f-6-3fdfd544852ed7431aa64f3b9481afb9'); if(!box) return;
+  const fix=()=>{
+    box.querySelectorAll('*').forEach(el=>{
+      if(el.children.length) return;
+      const t=(el.textContent||'').trim();
+      if(/odběru novinek|Povinné pole/i.test(t)) el.classList.add('ecm-hide');
+      if(/^E-mail\s*\*$/i.test(t)) el.textContent='E-mail';
+    });
+    box.querySelectorAll('input[type=email]').forEach(i=>i.placeholder='tvuj@email.cz');
+    box.querySelectorAll('input[type=text]').forEach(i=>{ if(/jméno/i.test(i.placeholder||i.name||'')) i.placeholder='Tvoje jméno'; });
+    box.querySelectorAll('button, input[type=submit]').forEach(b=>{ if(b.tagName==='INPUT') b.value='Pošli mi průvodce'; else if(!/průvodce/.test(b.textContent)) b.textContent='Pošli mi průvodce'; });
+  };
+  let busy=false; const run=()=>{ if(busy) return; busy=true; try{fix();}finally{ setTimeout(()=>busy=false,0); } };
+  new MutationObserver(run).observe(box,{childList:true,subtree:true}); run();
+})();
+
 /* registrace: jen pevný termín */
 const regSel = document.getElementById('regSel');
 const regList = [NEXT];
@@ -760,6 +812,50 @@ function renderQ(){
   };
 }
 renderQ();
+
+/* ===== pohyb: odhalování při scrollu, počítadla, cesta zákaznice ===== */
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const groups = [
+    ['.intro .kicker, .intro h1, .intro .lead, .intro .path, .intro .without, .intro .ctas', true],
+    ['#znas .center, .pain, .punch', true],
+    ['.stavba h2, .stavba .lead, .stage', true],
+    ['#detail .center, .slider', false],
+    ['.schedule h2, .schedule .lead, .next-big, .then, .vote', true],
+    ['.story .grid > div', true],
+    ['.reviews .center, .score, .rev', true],
+    ['#pro-koho .center, .fit', true],
+    ['#prubeh .center, .step, .get', true],
+    ['#kviz .center, .quiz-box', false],
+    ['.about img, .about .grid > div', true],
+    ['.lm .grid > *', true],
+    ['.register h2, .register .lead, .reg-form', true],
+    ['#faq details', false]
+  ];
+  groups.forEach(([sel, stagger])=>{
+    document.querySelectorAll(sel).forEach((el,i)=>{ el.classList.add('reveal'); if(stagger) el.classList.add('d'+Math.min(i%6,5)); });
+  });
+  const counters = document.querySelectorAll('.score b');
+  counters.forEach(b=>{ b.dataset.target = b.textContent.trim(); });
+  function count(b){
+    const t = b.dataset.target, m = t.match(/[\d,]+/); if(!m || reduce){ b.textContent=t; return; }
+    const end = parseFloat(m[0].replace(',','.')), dec = m[0].includes(',') ? 1 : 0, start = performance.now(), dur = 1400;
+    const step = now=>{ const p=Math.min((now-start)/dur,1), e=1-Math.pow(1-p,3);
+      b.textContent = t.replace(m[0], (end*e).toFixed(dec).replace('.',',')); if(p<1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+  if(!('IntersectionObserver' in window) || reduce){ document.querySelectorAll('.reveal').forEach(e=>e.classList.add('in')); return; }
+  const io = new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting) return;
+    e.target.classList.add('in');
+    if(e.target.classList.contains('score')) e.target.querySelectorAll('b').forEach(count);
+    io.unobserve(e.target);
+  }),{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
+  /* cesta zákaznice: kroky se postupně rozsvěcují */
+  const chips = document.querySelectorAll('.intro .path span'); let k = 0;
+  if(chips.length) setInterval(()=>{ chips.forEach((c,i)=>c.classList.toggle('on', i===k)); k=(k+1)%chips.length; }, 1300);
+})();
 </script>
 </body>
 </html>
