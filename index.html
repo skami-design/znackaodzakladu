@@ -292,6 +292,11 @@ blockquote cite{display:block;font-family:var(--sans);font-style:normal;font-siz
 .ecm-form button,.ecm-form input[type=submit]{background-color:var(--mint)!important;color:var(--ink)!important;border:0!important;border-radius:6px!important;padding:15px 28px!important;font-weight:700!important;font-size:16px!important;cursor:pointer!important;width:auto!important;height:auto!important;margin:6px 0 0!important}
 .ecm-form button:hover,.ecm-form input[type=submit]:hover{filter:brightness(1.05)}
 .ecm-form a{color:var(--mint-pale)!important;font-weight:400!important;font-size:13px!important}
+.lm-done{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:24px 26px;animation:lmIn .6s ease}
+.lm-done .t{font-family:var(--serif)!important;font-size:26px;line-height:1.25;color:#fff!important;margin-bottom:10px}
+.lm-done p{font-weight:400!important;font-size:16px!important;line-height:1.55;color:var(--mint-pale)!important;margin-top:8px}
+@keyframes lmIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.ecm-form div{color:#fff}
 /* register */
 .register{background:var(--plum);color:#fff}
 .register h2{color:#fff}.register h2 em{color:var(--mint)}
@@ -450,7 +455,7 @@ footer a{color:var(--mint-pale);text-decoration:none}
     <div>
       <div class="kicker">Příběh účastnice</div>
       <h2>Krásné svíčky měla od začátku. Profil to ale <em>neříkal.</em></h2>
-      <p class="lead">Irena tvoří designové svíčky RENÉA. Po Úklidu Instagramu přepsala bio, poskládala highlights jako cestu k objednávce a dala na profilovku sebe. Pak přidala Zkroť AI a dnes si obsah tvoří sama, svým stylem.</p>
+      <p class="lead">Irena tvoří designové svíčky RENÉA. Po Úklidu Instagramu přepsala bio, poskládala highlights jako cestu k objednávce a dala na profilovku sebe. Pak přidala Zkroť AI jako pomocníka na texty a dnes si obsah tvoří sama, svým stylem.</p>
       <div class="chips">
         <span><b>12k → 20k</b>zhlédnutí měsíčně po Úklidu IG</span>
         <span><b>2 výzvy</b>Úklid IG a Zkroť AI</span>
@@ -712,7 +717,19 @@ document.getElementById('thenList').innerHTML = `<div class="item"><div class="d
 /* Ecomail formulář: vlastní texty (widget se načte až na živém webu) */
 (function(){
   const box=document.getElementById('f-6-3fdfd544852ed7431aa64f3b9481afb9'); if(!box) return;
+  const done=()=>{
+    if(box.querySelector('.lm-done')) return;
+    box.querySelectorAll(':scope > *').forEach(el=>el.classList.add('ecm-hide'));
+    const d=document.createElement('div'); d.className='lm-done';
+    d.innerHTML='<div class="t">Hotovo, průvodce ti letí do e-mailu!</div><p>Za pár minut ho najdeš ve schránce. Kdyby nedorazil, mrkni do hromadné pošty nebo spamu a přesuň si mě do hlavní, ať ti neutečou další tipy.</p><p>Až projdeš pracovní list na konci, odpověz mi na e-mail číslem své zastávky. Moc mi tím pomůžeš.</p>';
+    box.appendChild(d);
+  };
   const fix=()=>{
+    const em = box.querySelector('input[type=email]'); const hasForm = !!(em && em.offsetParent !== null);
+    const hadForm = box.dataset.seen==='1';
+    if(hasForm) box.dataset.seen='1';
+    if(hadForm && !hasForm && box.textContent.trim()){ done(); return; }
+    if(!hasForm) return;
     box.querySelectorAll('*').forEach(el=>{
       if(el.children.length) return;
       const t=(el.textContent||'').trim();
@@ -724,7 +741,7 @@ document.getElementById('thenList').innerHTML = `<div class="item"><div class="d
     box.querySelectorAll('button, input[type=submit]').forEach(b=>{ if(b.tagName==='INPUT') b.value='Pošli mi průvodce'; else if(!/průvodce/.test(b.textContent)) b.textContent='Pošli mi průvodce'; });
   };
   let busy=false; const run=()=>{ if(busy) return; busy=true; try{fix();}finally{ setTimeout(()=>busy=false,0); } };
-  new MutationObserver(run).observe(box,{childList:true,subtree:true}); run();
+  new MutationObserver(run).observe(box,{childList:true,subtree:true,attributes:true,attributeFilter:['style','class']}); run();
 })();
 
 /* registrace: jen pevný termín */
