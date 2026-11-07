@@ -111,6 +111,17 @@ nav .links a.btn{color:var(--mint-pale);padding:10px 20px;font-size:14px}
 @media(max-width:900px){.pains{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.pains{grid-template-columns:1fr}}
 
+/* představ si */
+.imagine{background:#fff;padding-top:80px}
+.moments{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}
+.moment{background:var(--cream);border-radius:var(--r);padding:26px;border-top:3px solid var(--mint);transition:transform .25s}
+.moment:hover{transform:translateY(-4px)}
+.moment .when{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--plum-2);margin-bottom:12px}
+.moment .msg{background:#fff;border-radius:16px 16px 16px 4px;padding:14px 16px;font-size:16px;line-height:1.45;color:var(--ink);box-shadow:0 6px 16px rgba(22,33,26,.06);margin-bottom:12px}
+.moment p{font-size:15.5px;color:var(--muted)}
+.moment p.big{font-family:var(--serif);font-size:20px;line-height:1.4;color:var(--ink)}
+@media(max-width:1000px){.moments{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.moments{grid-template-columns:1fr}}
 /* stavba */
 .stavba{background:var(--ink);color:#fff}
 .stavba h2{color:#fff}.stavba .lead{color:#cfd8d1}
@@ -289,7 +300,9 @@ blockquote cite{display:block;font-family:var(--sans);font-style:normal;font-siz
 .ecm-form input[type=text],.ecm-form input[type=email]{width:100%!important;font-size:16px!important;padding:13px 15px!important;border:1.5px solid transparent!important;border-radius:6px!important;background-color:#fff!important;color:var(--ink)!important;margin:6px 0 14px!important;height:auto!important}
 .ecm-form input::placeholder{color:#8a948e!important}
 .ecm-form input:focus{outline:none!important;border-color:var(--mint)!important}
-.ecm-form button,.ecm-form input[type=submit]{background-color:var(--mint)!important;color:var(--ink)!important;border:0!important;border-radius:6px!important;padding:15px 28px!important;font-weight:700!important;font-size:16px!important;cursor:pointer!important;width:auto!important;height:auto!important;margin:6px 0 0!important}
+.ecm-form button,.ecm-form input[type=submit]{background-color:var(--mint)!important;color:var(--ink)!important;border:0!important;border-radius:6px!important;padding:19px 28px!important;font-weight:700!important;font-size:18px!important;letter-spacing:.02em!important;cursor:pointer!important;width:100%!important;height:auto!important;margin:8px 0 0!important;box-shadow:0 10px 24px rgba(10,20,14,.25)!important;transition:transform .15s,box-shadow .15s!important}
+.ecm-form button,.ecm-form input[type=submit]{text-align:center!important;white-space:normal!important;line-height:1.3!important}
+.ecm-form button:hover,.ecm-form input[type=submit]:hover{transform:translateY(-2px)!important;box-shadow:0 14px 30px rgba(10,20,14,.3)!important}
 .ecm-form button:hover,.ecm-form input[type=submit]:hover{filter:brightness(1.05)}
 .ecm-form a{color:var(--mint-pale)!important;font-weight:400!important;font-size:13px!important}
 .lm-done{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:24px 26px;animation:lmIn .6s ease}
@@ -297,6 +310,14 @@ blockquote cite{display:block;font-family:var(--sans);font-style:normal;font-siz
 .lm-done p{font-weight:400!important;font-size:16px!important;line-height:1.55;color:var(--mint-pale)!important;margin-top:8px}
 @keyframes lmIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .ecm-form div{color:#fff}
+.lm-pack{display:flex;gap:28px;align-items:center;margin-top:26px}
+.lm-pack img{width:150px;border:6px solid #fbf8f5;border-radius:4px;transform:rotate(-4deg);box-shadow:0 18px 36px rgba(10,20,14,.35)}
+.lm-pack ul{list-style:none;color:var(--mint-pale);font-size:16px}
+.lm-pack li{padding:5px 0 5px 22px;position:relative}
+.lm-pack li::before{content:"";position:absolute;left:0;top:15px;width:12px;height:2px;background:var(--mint)}
+.lm-pack b{color:#fff}
+.lm-badge{display:inline-block;background:var(--mint);color:var(--ink);font-weight:700;font-size:13px;letter-spacing:.18em;padding:7px 14px;border-radius:5px;margin-bottom:16px}
+@media(max-width:560px){.lm-pack img{width:110px}}
 /* register */
 .register{background:var(--plum);color:#fff}
 .register h2{color:#fff}.register h2 em{color:var(--mint)}
@@ -365,6 +386,7 @@ footer a{color:var(--mint-pale);text-decoration:none}
     <a href="#terminy">Termíny</a>
     <a href="#reference">Reference</a>
     <a href="#kviz">Kterou vybrat?</a>
+    <a href="#pruvodce">Průvodce zdarma</a>
     <a href="#registrace" class="btn btn-dark">Chci místo</a>
   </div>
 </div></nav>
@@ -403,6 +425,18 @@ footer a{color:var(--mint-pale);text-decoration:none}
     <div class="pain"><h3>Každý příspěvek jinak</h3><p>Jiné písmo, jiné barvy, jiný filtr. Profil nedrží pohromadě a ty pokaždé začínáš od nuly.</p></div>
   </div>
   <p class="punch">Nejde o to, že bys tvořila špatně nebo málo.<br>Jde o to, <em>v jakém pořadí stavíš.</em></p>
+</div></section>
+
+<!-- PŘEDSTAV SI -->
+<section class="imagine"><div class="wrap">
+  <div class="center"><div class="kicker">Představ si</div><div class="rule"></div><h2>Jak to vypadá, když profil <em>začne pracovat s tebou</em></h2></div>
+  <div class="moments">
+    <div class="moment"><div class="when">Úterý, 21:40</div><div class="msg">„Dobrý den, máte ještě ten hrnek v šalvějové? Chtěla bych ho sestře k narozeninám.“</div><p>Píše žena, kterou vůbec neznáš. Našla tě sama.</p></div>
+    <div class="moment"><div class="when">Neděle večer</div><p class="big">Víš, co dáš tento týden ven. Plán máš na papíře a nesedíš nad prázdným popiskem do půlnoci.</p></div>
+    <div class="moment"><div class="when">Po prvním reelu</div><p class="big">Natočíš se, podíváš se na to… a nemáš chuť to smazat. Naopak ho zveřejníš.</p></div>
+    <div class="moment"><div class="when">U rodinného oběda</div><p class="big">Když se někdo zeptá, jak jde tvoření, nemusíš krčit rameny. Víš, co funguje a proč.</p></div>
+  </div>
+  <p class="punch">Nic z toho není zázrak. Je to profil postavený <em>od základů.</em></p>
 </div></section>
 
 <!-- STAVBA -->
@@ -545,9 +579,14 @@ footer a{color:var(--mint-pale);text-decoration:none}
 <!-- LEAD MAGNET -->
 <section class="lm" id="pruvodce"><div class="wrap"><div class="grid">
   <div>
-    <div class="kicker" style="color:var(--mint)">Průvodce zdarma</div>
-    <h2>Krásný produkt <em>nestačí.</em></h2>
+    <div class="lm-badge">PRŮVODCE ZDARMA</div>
+    <div style="font-family:var(--serif);font-style:italic;color:var(--mint-pale);font-size:20px;margin-bottom:6px">Krásný produkt nestačí.</div>
+    <h2>Od srdíček <em>k objednávkám</em></h2>
     <p>Projdi šest zastávek, kterými jde každá zákaznice, než u tebe nakoupí. U každé najdeš příklad, jak to vypadá, když to funguje a když ne, a jeden tip, který uděláš ještě dnes.</p>
+    <div class="lm-pack">
+      <img src="pruvodce-obalka.jpg" alt="Obálka průvodce Od srdíček k objednávkám">
+      <ul><li>6 zastávek k objednávce</li><li>příklady i kousek teorie</li><li>tip, který uděláš ještě dnes</li><li>pracovní list pro tebe</li><li><b>16 stran, zdarma do e-mailu</b></li></ul>
+    </div>
   </div>
   <div class="lm-box">
     <!-- Ecomail formulář: Značka od základů · průvodce (zobrazí se jen na živém webu) -->
@@ -738,7 +777,7 @@ document.getElementById('thenList').innerHTML = `<div class="item"><div class="d
     });
     box.querySelectorAll('input[type=email]').forEach(i=>i.placeholder='tvuj@email.cz');
     box.querySelectorAll('input[type=text]').forEach(i=>{ if(/jméno/i.test(i.placeholder||i.name||'')) i.placeholder='Tvoje jméno'; });
-    box.querySelectorAll('button, input[type=submit]').forEach(b=>{ if(b.tagName==='INPUT') b.value='Pošli mi průvodce'; else if(!/průvodce/.test(b.textContent)) b.textContent='Pošli mi průvodce'; });
+    box.querySelectorAll('button, input[type=submit]').forEach(b=>{ if(b.tagName==='INPUT') b.value='Chci vědět, kde se můj Instagram zasekává →'; else if(!/zasekává/.test(b.textContent)) b.textContent='Chci vědět, kde se můj Instagram zasekává →'; });
   };
   let busy=false; const run=()=>{ if(busy) return; busy=true; try{fix();}finally{ setTimeout(()=>busy=false,0); } };
   new MutationObserver(run).observe(box,{childList:true,subtree:true,attributes:true,attributeFilter:['style','class']}); run();
@@ -838,6 +877,7 @@ renderQ();
   const groups = [
     ['.intro .kicker, .intro h1, .intro .lead, .intro .path, .intro .without, .intro .ctas', true],
     ['#znas .center, .pain, .punch', true],
+    ['.imagine .center, .moment, .imagine .punch', true],
     ['.stavba h2, .stavba .lead, .stage', true],
     ['#detail .center, .slider', false],
     ['.schedule h2, .schedule .lead, .next-big, .then, .vote', true],
