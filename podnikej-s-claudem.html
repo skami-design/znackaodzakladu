@@ -75,6 +75,21 @@ section{padding:80px 0}
 .vs b{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
 .vs .no b{color:var(--mauve-dark)}.vs .yes b{color:var(--mint)}
 
+/* COMPARE */
+.compare{background:var(--paper)}
+.compare h2{font-size:clamp(28px,3.8vw,42px);text-align:center;max-width:760px;margin:0 auto 40px}
+.compare h2 em{color:var(--mauve-dark)}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.cmp figure{background:var(--white);border-radius:20px;padding:18px 18px 24px;position:relative}
+.cmp img{width:100%;height:auto;display:block;border-radius:14px;background:var(--mint-light)}
+.cmp .badge{display:inline-block;margin:2px 0 14px 4px;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;padding:7px 14px;border-radius:999px}
+.cmp .badge.no{background:var(--white);color:var(--mauve-dark)}
+.cmp .badge.yes{background:var(--green);color:var(--mint)}
+.cmp figcaption{padding:16px 8px 0;font-size:16.5px;color:#4b574e}
+.cmp figcaption b{display:block;font-family:'Playfair Display',serif;font-size:21px;color:var(--green);margin-bottom:4px}
+.cmp-note{text-align:center;font-size:14px;color:#6a766d;margin:22px 0 8px}
+.cmp-cta{text-align:center;font-size:19px;margin:18px auto 24px;max-width:560px}
+
 /* PROGRAM */
 .program{background:var(--paper)}
 .program h2{font-size:clamp(30px,4.2vw,44px);text-align:center;margin-bottom:12px}
@@ -163,7 +178,7 @@ footer a{color:var(--mint)}
   .hero-img{order:-1}
   .hero-img img{max-height:300px}
   .facts{grid-template-columns:repeat(2,1fr)}
-  .cards,.days,.who-grid,.vs{grid-template-columns:1fr}
+  .cards,.days,.who-grid,.cmp{grid-template-columns:1fr}
   .offer-box,form{padding:28px 22px}
   .price{font-size:54px}
   .sticky{display:block;position:fixed;bottom:0;left:0;right:0;background:var(--green);padding:10px 16px;z-index:50;transform:translateY(110%);transition:transform .25s}
@@ -243,13 +258,31 @@ footer a{color:var(--mint)}
         <h2>Můj AI junior grafik. On <em>navrhuje</em>, ty schvaluješ.</h2>
         <p>Klaudius je ilustrovaná postava, kterou jsem si pro Clauda vymyslela. S Claudem totiž tvořím a vím, že funguje skvěle, když mu správně zadáš, co chceš.</p>
         <p>Právě tohle se naučíš. Nebudeš grafik, budeš ten, kdo <b>řídí</b> grafika, který nikdy nespí a nikdy se neurazí, když řekneš „ještě jednou“.</p>
-        <div class="vs">
-          <div class="no"><b>Takhle ne</b>„Udělej mi příspěvek o svíčkách.“</div>
-          <div class="yes"><b>Takhle ano</b>Zadání s tvým briefem: barvy, písmo, tón, fotka a co má příspěvek říct.</div>
-        </div>
-        <p class="note" style="margin-top:14px">Výsledek nevypadá generický. Vypadá jako ty.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- SROVNÁNÍ -->
+<section class="compare">
+  <div class="wrap">
+    <div class="eyebrow" style="text-align:center">Stejné zadání, dva výsledky</div>
+    <h2>Rozdíl není v nástroji. Je v tom, co AI o <em>tobě</em> řekneš.</h2>
+    <div class="cmp">
+      <figure>
+        <div class="badge no">Takhle ne</div>
+        <img src="bruno-bez-briefu.jpg" alt="Grafika vytvořená AI ze zadání bez kontextu o značce" loading="lazy">
+        <figcaption><b>Jedna věta a fotka.</b>Hezké, ale mohlo by patřit komukoli. Chybí barvy značky, písmo, tón i název.</figcaption>
+      </figure>
+      <figure>
+        <div class="badge yes">Takhle ano</div>
+        <img src="bruno-s-briefem.jpg" alt="Grafika vytvořená AI se zadáním a briefem značky" loading="lazy">
+        <figcaption><b>Stejná věta plus brief značky.</b>Barvy, písma i text jsou tvoje. Vypadá to jako ty.</figcaption>
+      </figure>
+    </div>
+    <p class="cmp-note">Ukázková značka Malé klubíčko. Fotka výrobku je původní, obě grafiky vznikly s AI.</p>
+    <p class="cmp-cta">Brief značky si sepíšeš druhý den rychlovky. Třetí den podle něj uděláš svou první grafiku.</p>
+    <p style="text-align:center"><a href="#prihlaska" class="btn dark">Chci to taky · 290 Kč</a></p>
   </div>
 </section>
 
