@@ -183,6 +183,13 @@ footer a{color:var(--mint-pale);text-decoration:none}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.glow{animation:none}}
+/* proměny */
+.trans{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 20px 22px;margin-top:36px;-webkit-overflow-scrolling:touch}
+.tcard{flex:0 0 min(420px,82vw);scroll-snap-align:center;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.tcard img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.tcard div{padding:14px 18px;font-size:15px;font-weight:600}
+.tcard span{color:var(--muted);font-weight:400}
+.tcard:first-child{margin-left:auto}.tcard:last-child{margin-right:auto}
 </style>
   <!-- Vercel Web Analytics -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
@@ -236,6 +243,8 @@ footer a{color:var(--mint-pale);text-decoration:none}
   <div class="center"><div class="kicker">Jak se budeš cítit na konci</div><div class="rule" style="background:var(--mint)"></div><h2>Slovy holek <em>z minulých kol</em></h2></div>
   <div class="fgrid"><div class="fcard"><div class="word">Jasně</div><blockquote>„Mám taky konečně jasný plán, co postovat a čeho tím dosáhnu, což jsem doteď netušila, a všechno byl jeden velký chaos.“</blockquote><cite>@pyrowoman_cz</cite></div><div class="fcard"><div class="word">V klidu</div><blockquote>„Plánuji týden dopředu a mohu tak být v klidu, protože vím, kdy a co postovat.“</blockquote><cite>@lumari_by_marti</cite></div><div class="fcard"><div class="word">Orientovaně</div><blockquote>„Aby se zákazník rychle zorientoval v tom, kdo jsem, co nabízím, kolik to stojí. Tohle byl můj hlavní cíl a výzva mi ukázala, jak na to.“</blockquote><cite>@koutekucmelaka</cite></div></div>
 </div></section>
+
+<section style="background:#fff"><div class="wrap"><div class="center"><div class="kicker">Proměny</div><div class="rule"></div><h2>Profily holek <em>před a po</em></h2><p class="lead">Vlevo začátek výzvy, vpravo konec. Přesuň se prstem a prohlédni si všechny.</p></div></div><div class="trans"><div class="tcard"><img src="promena-lipove-kouzlo.jpg" alt="Profil lipove.kouzlo před a po výzvě" loading="lazy"><div>@lipove.kouzlo <span>· před a po</span></div></div><div class="tcard"><img src="promena-daisy-design.jpg" alt="Profil daisy_design_jewellery před a po výzvě" loading="lazy"><div>@daisy_design_jewellery <span>· před a po</span></div></div><div class="tcard"><img src="promena-friky.jpg" alt="Profil friky.cz před a po výzvě" loading="lazy"><div>@friky.cz <span>· před a po</span></div></div><div class="tcard"><img src="promena-lumari.jpg" alt="Profil lumari_by_marti před a po výzvě" loading="lazy"><div>@lumari_by_marti <span>· před a po</span></div></div><div class="tcard"><img src="promena-mishako.jpg" alt="Profil by_mishako_macrame před a po výzvě" loading="lazy"><div>@by_mishako_macrame <span>· před a po</span></div></div></div></section>
 
 <div class="midcta"><div class="wrap">
   <div><h3>Úklid Instagramu · 28. 11.–4. 12.</h3><p>7 dní · 590 Kč · max 12 míst · osobní zpětná vazba</p></div>
