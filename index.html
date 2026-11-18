@@ -692,7 +692,7 @@ const CH = [
    leave:'vlastní prompt na svou značku. Ne hotovou šablonu, ale nástroj, který umíš ovládat.'}
 ];
 /* pevný termín (registrace otevřená) */
-const NEXT = {id:'uklid', date:'28. 11.–4. 12.', open:true};
+const NEXT = {id:'uklid', date:'28. 11.–4. 12.', open:true, page:'uklid-instagramu.html'};
 /* další termíny začátků, výzvu do nich vybere hlasování */
 const SLOTS = ['9. 12.','4. 1.','16. 1.','30. 1.'];
 /* hlasování: kandidáti (id výzvy nebo vlastní položka) */
@@ -751,7 +751,7 @@ const n = byId(NEXT.id);
 document.getElementById('nextBig').innerHTML = `<div class="kicker">${NEXT.open?'Nejbližší kolo · registrace otevřená':'Nejbližší kolo'}</div>
   <h3>${n.name}</h3><p>${n.promise}</p>
   <div class="meta"><span class="price">${n.price}</span><span>${NEXT.date}</span><span>${n.days}</span><span>${n.cap}</span></div>
-  <div><a class="btn btn-mint" href="#registrace">Chci místo</a></div>`;
+  <div><a class="btn btn-mint" href="#registrace">Chci místo</a>${NEXT.page?` <a class="more-link" href="${NEXT.page}" style="margin-left:14px;color:inherit;font-weight:600">Víc o výzvě →</a>`:''}</div>`;
 document.getElementById('thenList').innerHTML = `<div class="item"><div class="d">Další začátky</div><div class="t">${SLOTS.join(' · ')}</div><div class="s">Výzvu do každého termínu vybírá hlasování níž. Nejvíc hlasů = nejbližší volný termín.</div></div>
   <div class="item" id="leader"></div>`;
 
