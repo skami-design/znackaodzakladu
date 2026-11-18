@@ -692,16 +692,16 @@ const CH = [
    leave:'vlastní prompt na svou značku. Ne hotovou šablonu, ale nástroj, který umíš ovládat.'}
 ];
 /* pevný termín (registrace otevřená) */
-const NEXT = {id:'ukaz', date:'16.–22. 11.', open:true};
+const NEXT = {id:'uklid', date:'28. 11.–4. 12.', open:true};
 /* další termíny začátků, výzvu do nich vybere hlasování */
-const SLOTS = ['28. 11.','9. 12.','4. 1.','16. 1.','30. 1.'];
+const SLOTS = ['9. 12.','4. 1.','16. 1.','30. 1.'];
 /* hlasování: kandidáti (id výzvy nebo vlastní položka) */
 const VOTE = [
-  {id:'uklid'},{id:'stories'},{id:'ai'},{id:'canva'},{id:'vizual'},{id:'znacka'},
+  {id:'ukaz'},{id:'stories'},{id:'ai'},{id:'canva'},{id:'vizual'},{id:'znacka'},
   {id:'claude', name:'Grafika s Claudem', sub:'novinka'}
 ];
 /* ruční stav hlasů: použije se, dokud není napojené /api/vote (pak se počítá samo) */
-const VOTES_MANUAL = {uklid:0, stories:0, ai:0, canva:0, vizual:0, znacka:0, claude:0};
+const VOTES_MANUAL = {ukaz:0, stories:0, ai:0, canva:0, vizual:0, znacka:0, claude:0};
 
 /* ====== RENDER ====== */
 const byId = id => CH.find(c=>c.id===id);
