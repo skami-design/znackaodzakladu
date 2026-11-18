@@ -328,6 +328,7 @@ footer a{color:var(--mint-pale);text-decoration:none}
       <div><label class="f" for="vzkaz">Co tě na kameře děsí nejvíc? <span style="font-weight:400;color:var(--muted)">(nepovinné)</span></label><textarea id="vzkaz" name="vzkaz" rows="3" placeholder="Pomůže mi to připravit zpětnou vazbu přímo pro tebe."></textarea></div>
       <div class="consent"><input type="checkbox" id="souhlas" name="souhlas" value="ano" required><label for="souhlas">Souhlasím se <a href="gdpr.html" target="_blank" rel="noopener">zpracováním osobních údajů</a> a <a href="vop-vyzvy.html" target="_blank" rel="noopener">podmínkami účasti</a>.</label></div>
       <button class="btn btn-dark" type="submit" id="regBtn">Chci místo ve výzvě →</button>
+      <div class="msg" id="regMsg"></div>
       <p class="note" style="margin-top:0;color:var(--ink-soft)">Přihláška tě k ničemu nezavazuje. Místo ti podržím do zaplacení.</p>
     </form>
   </div>
@@ -339,7 +340,7 @@ footer a{color:var(--mint-pale);text-decoration:none}
 </div></footer>
 
 <script>
-/* odeslání přihlášky přes /api/registrace (Vercel → tvůj Seznam) */
+/* odeslání přihlášky přes Formspree bez opuštění stránky */
 (function(){
   const f = document.getElementById('regForm'), b = document.getElementById('regBtn'), m = document.getElementById('regMsg');
   const show = (cls, html) => { m.className = 'msg ' + cls; m.innerHTML = html; m.style.display = 'block'; };
@@ -350,7 +351,7 @@ footer a{color:var(--mint-pale);text-decoration:none}
     if (!f.souhlas.checked) return show('err', 'Potřebuju ještě tvůj souhlas se zpracováním údajů a podmínkami.');
     b.disabled = true; b.textContent = 'Posílám…';
     try {
-      const r = await fetch('/api/registrace', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...d, vyzva: 'Ukaž se světu · 16.–22. 11. · 690 Kč' }) });
+      const r = await fetch(f.action, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(f) });
       if (!r.ok) throw 0;
       f.querySelectorAll('input,textarea').forEach(i => i.disabled = true); b.style.display = 'none';
       show('ok', '<b>Mám tě! 🌱</b>Přihláška dorazila. Do 24 hodin ti pošlu platební údaje, mrkni prosím i do hromadné pošty. Těším se na tebe ve výzvě.');
