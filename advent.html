@@ -326,6 +326,7 @@ nav .links a.btn{color:var(--mint-pale);padding:10px 20px;font-size:14px}
     <div class="kicker">Zdarma</div>
     <h2>Otevři si <em>adventní kalendář</em></h2>
     <p class="lead">První okénko ti přijde 1. prosince.</p>
+    <div class="msg ok" id="advThanks" style="margin-top:30px"><b>Jsi v kalendáři! 🎁</b>Děkuju za přihlášení. Za chvilku ti přijde uvítací e-mail a první okénko se otevře 1. prosince. Kdyby e-mail nedorazil, mrkni prosím do hromadné pošty nebo do spamu.</div>
     <!-- Ecomail formulář: Adventní kalendář (zobrazí se jen na živém webu) -->
     <div class="lm-box">
       <script>
@@ -351,7 +352,12 @@ nav .links a.btn{color:var(--mint-pale);padding:10px 20px;font-size:14px}
 (function(){
   const box = document.getElementById('f-7-c01458c4e85a58f0047857fac06ae283');
   if (!box) return;
+  let seen = false;
+  const done = () => { box.closest('.lm-box').style.display = 'none'; const t = document.getElementById('advThanks'); t.style.display = 'block'; t.scrollIntoView({behavior:'smooth', block:'center'}); };
   const tidy = () => {
+    const hasInput = !!box.querySelector('input[type=email]');
+    if (hasInput) seen = true;
+    else if (seen) return done();
     box.querySelectorAll('p,div,span').forEach(el => {
       if (el.children.length === 0 && /speciální výhody/i.test(el.textContent)) el.style.display = 'none';
     });
