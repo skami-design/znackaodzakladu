@@ -352,12 +352,29 @@ nav .links a.btn{color:var(--mint-pale);padding:10px 20px;font-size:14px}
 (function(){
   const box = document.getElementById('f-7-c01458c4e85a58f0047857fac06ae283');
   if (!box) return;
-  let seen = false;
-  const done = () => { box.closest('.lm-box').style.display = 'none'; const t = document.getElementById('advThanks'); t.style.display = 'block'; t.scrollIntoView({behavior:'smooth', block:'center'}); };
+  let seen = false, sent = false, finished = false;
+  const done = () => {
+    if (finished) return; finished = true;
+    box.closest('.lm-box').style.display = 'none';
+    const t = document.getElementById('advThanks'); t.style.display = 'block';
+    t.scrollIntoView({behavior:'smooth', block:'center'});
+  };
+  const visible = el => !!el && el.offsetParent !== null && getComputedStyle(el).visibility !== 'hidden';
+  // Je odesláno? (Ecomail formulář nahradí, skryje, nebo ukáže svoje „Děkujeme“)
+  const check = () => {
+    if (finished) return;
+    const input = box.querySelector('input[type=email]');
+    if (input) seen = true;
+    const thanksText = /děkujeme|dekujeme|děkuji|přihlášen/i.test(box.textContent);
+    if (seen && (!input || !visible(input))) return done();
+    if (sent && thanksText) return done();
+  };
+  box.addEventListener('submit', () => { sent = true; }, true);
+  box.addEventListener('click', e => { if (e.target.closest('button, input[type=submit]')) sent = true; }, true);
+  setInterval(check, 400);
   const tidy = () => {
-    const hasInput = !!box.querySelector('input[type=email]');
-    if (hasInput) seen = true;
-    else if (seen) return done();
+    check();
+    if (finished) return;
     box.querySelectorAll('p,div,span').forEach(el => {
       if (el.children.length === 0 && /speciální výhody/i.test(el.textContent)) el.style.display = 'none';
     });
