@@ -231,15 +231,16 @@ nav .links a.btn{color:var(--mint-pale);padding:10px 20px;font-size:14px}
 .ecm-form div{color:#fff}
 .lm-box{margin-top:30px}
 /* ===== advent ===== */
-.hero .wrap{grid-template-columns:1.1fr .9fr}
+@media(min-width:861px){.hero .wrap{grid-template-columns:1.1fr .9fr}}
 .hero{padding-top:70px}
-.agrid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.agrid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;width:100%}
 .agrid div{aspect-ratio:1;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:24px;font-weight:600}
 .agrid .w1{background:rgba(159,212,176,.2);color:var(--mint)}
 .agrid .w2{background:rgba(255,255,255,.12);color:#f3e9ec}
 .agrid .w3{background:rgba(213,240,222,.14);color:var(--mint-pale)}
 .agrid .w4{background:var(--mint);color:var(--ink)}
-@media(max-width:860px){.agrid{max-width:380px}}
+@media(max-width:860px){.agrid{max-width:420px;margin:0 auto}}
+@media(max-width:480px){.agrid{grid-template-columns:repeat(4,1fr);gap:8px;max-width:280px}.agrid div{font-size:18px;border-radius:10px}}
 .flake{position:absolute;pointer-events:none}
 .weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
 .week{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px 22px}
@@ -287,7 +288,7 @@ nav .links a{white-space:nowrap}
       <div class="kicker">Zdarma · 1.–24. prosince</div>
       <h1>Adventní kalendář pro <em>handmade tvůrkyně</em></h1>
       <p class="lead">V prosinci nemusíš tvořit víc. Každý den ti do e-mailu přistane jedno okénko: malý úkol na 5–15 minut a dárek ode mě. Tip, mini návod nebo šablona, kterou využiješ hned.</p>
-      <div class="chips"><span>24 okének</span><span>5–15 minut denně</span><span>bez tlaku</span><span class="hl">zdarma</span></div>
+      <div class="chips"><span>24 okének</span><span>5–15 minut denně</span><span class="hl">zdarma</span></div>
       <a href="#prihlaska" class="btn btn-mint">Chci adventní kalendář →</a>
       <p class="note">Přidat se můžeš i během adventu.</p>
     </div>
