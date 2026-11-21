@@ -176,41 +176,13 @@ nav .links a.btn{color:var(--mint-pale);padding:10px 20px;font-size:14px}
 
 /* schedule */
 .schedule{background:var(--mint-pale)}
-.sched-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:26px;margin-top:40px}
-#nextBig{display:flex;flex-direction:column;gap:18px}
+#nextBig{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:40px}
 .next-big{background:var(--ink);color:#fff;border-radius:24px;padding:34px;display:flex;flex-direction:column;gap:12px}
 .next-big .kicker{color:var(--mint);margin:0}
 .next-big h3{font-size:36px;color:#fff}
 .next-big p{color:#cfd8d1}
 .next-big .meta span{background:#2a3a30;color:var(--mint-pale)}
 .next-big .meta span.price{background:var(--mint);color:var(--ink)}
-.then{display:grid;gap:14px}
-.then .item{background:#fff;border-radius:18px;padding:22px 24px}
-.then .item .d{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--plum-2)}
-.then .item .t{font-family:var(--serif);font-size:23px;margin:2px 0}
-.then .item .s{font-size:15px;color:var(--muted)}
-.vote{margin-top:26px;background:#fff;border-radius:24px;padding:34px;display:grid;grid-template-columns:1fr 1.3fr;gap:30px}
-.vote h3{font-size:28px;margin-bottom:10px}
-.vote p{color:var(--muted);font-size:16px}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.opt{position:relative}
-.opt input{position:absolute;opacity:0}
-.opt label{display:block;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;font-weight:600;font-size:15.5px;cursor:pointer;height:100%}
-.opt label small{display:block;font-weight:400;color:var(--muted);font-size:13.5px}
-.opt input:checked+label{border-color:var(--green);background:var(--mint-pale)}
-.vote .row{display:flex;gap:10px;margin-top:14px}
-.bars{display:grid;gap:8px}
-.bar{position:relative;display:block;border:1.5px solid var(--line);border-radius:12px;padding:11px 14px;cursor:pointer;overflow:hidden;font-size:15.5px;font-weight:600}
-.bar input{position:absolute;opacity:0}
-.bar .fill{position:absolute;inset:0 auto 0 0;background:var(--mint-pale);width:0;transition:width .6s ease;z-index:0}
-.bar .lab,.bar .pct{position:relative;z-index:1}
-.bar .lab small{font-weight:400;color:var(--muted);font-size:13.5px;margin-left:6px}
-.bar .pct{float:right;color:var(--green);font-variant-numeric:tabular-nums}
-.bar:has(input:checked){border-color:var(--green)}
-.bar:has(input:checked) .fill{background:var(--mint)}
-.vote-note{margin-top:12px;font-size:14px!important}
-.vote input[type=email]{flex:1}
-@media(max-width:860px){.sched-grid,.vote{grid-template-columns:1fr}.opts{grid-template-columns:1fr}.vote .row{flex-direction:column}}
 
 /* story */
 .story .grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-top:10px}
@@ -488,25 +460,8 @@ nav .links a{white-space:nowrap}
 <section class="schedule" id="terminy"><div class="wrap">
   <div class="kicker">Termíny</div>
   <h2>Co se <em>chystá</em></h2>
-  <p class="lead">Termíny začátků jsou dané. Kterou výzvu do nich dám, rozhodujete vy: výzva s nejvíc hlasy dostane nejbližší volný termín.</p>
-  <div class="sched-grid">
-    <div id="nextBig"></div>
-    <div class="then" id="thenList"></div>
-  </div>
-  <form class="vote" action="https://formspree.io/f/xzdlojwl" method="POST" id="voteForm">
-    <input type="hidden" name="_subject" value="Hlas: další výzva · Značka od základů">
-    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-    <div>
-      <h3>Kterou výzvu <em>chceš příště?</em></h3>
-      <p>Vyber jednu a nech mi e-mail. Kdo hlasuje, dozví se o novém kole jako první, ještě než ho oznámím na Instagramu. Žádný spam, jen tohle.</p>
-      <p class="vote-note" id="voteNote"></p>
-    </div>
-    <div>
-      <div class="bars" id="bars"></div>
-      <div class="row"><input type="email" name="email" placeholder="tvuj@email.cz" required><button class="btn btn-dark" type="submit">Hlasovat</button></div>
-      <div class="thanks" id="voteThanks">Díky! Hlas mám a dám ti vědět jako první.</div>
-    </div>
-  </form>
+  <p class="lead">Nejbližší otevřená kola. Víc o každé výzvě najdeš na jejím vlastním odkazu výš.</p>
+  <div id="nextBig"></div>
 </div></section>
 
 <!-- STORY -->
@@ -721,16 +676,6 @@ const NEXT_LIST = [
   {id:'ai', date:'28. 11.–4. 12.', open:true},
   {id:'stories', date:'7. 12.–13. 12.', open:true}
 ];
-/* další termíny začátků, výzvu do nich vybere hlasování */
-const SLOTS = ['9. 12.','4. 1.','16. 1.','30. 1.'];
-/* hlasování: kandidáti (id výzvy nebo vlastní položka) */
-const VOTE = [
-  {id:'uklid'},{id:'canva'},{id:'vizual'},{id:'znacka'},
-  {id:'claude', name:'Grafika s Claudem', sub:'novinka'}
-];
-/* ruční stav hlasů: použije se, dokud není napojené /api/vote (pak se počítá samo) */
-const VOTES_MANUAL = {uklid:0, canva:0, vizual:0, znacka:0, claude:0};
-
 /* ====== RENDER ====== */
 const byId = id => CH.find(c=>c.id===id);
 document.getElementById('stages').innerHTML = STAGES.map(s=>`
@@ -743,9 +688,9 @@ document.getElementById('detailList').innerHTML = CH.map(c=>{
   const st = STAGES.find(s=>s.id===c.stage);
   const nx = NEXT_LIST.find(x=>x.id===c.id);
   const isNext = !!nx;
-  const when = isNext ? `<span>${nx.date}</span>` : `<span>termín podle hlasování</span>`;
+  const when = isNext ? `<span>${nx.date}</span>` : `<span>termín upřesním brzy</span>`;
   const act = isNext && nx.open ? `<a class="btn btn-dark" href="#registrace" data-reg="${c.id}">Chci místo</a>`
-    : `<a class="btn btn-dark" href="#terminy" data-vote="${c.id}">Hlasovat pro tuhle výzvu</a>`;
+    : `<a class="btn btn-dark" href="https://www.instagram.com/znacka_od_zakladu/" target="_blank" rel="noopener">Napsat o zájmu</a>`;
   return `<article class="detail" id="${c.id}" data-id="${c.id}"><img src="${c.img}" alt="${c.name}">
   <div class="b"><div class="stg">${st.name}</div><h3>${c.name}</h3><p class="promise">${c.promise}</p>
   <div class="meta"><span class="price">${c.price}</span><span>${c.days}</span><span>${c.cap}</span>${when}</div>
@@ -783,8 +728,6 @@ document.getElementById('nextBig').innerHTML = NEXT_LIST.map(nx=>{
   <div class="meta"><span class="price">${n.price}</span><span>${nx.date}</span><span>${n.days}</span><span>${n.cap}</span></div>
   <div><a class="btn btn-mint" href="#registrace" data-reg="${nx.id}">Chci místo</a></div></div>`;
 }).join('');
-document.getElementById('thenList').innerHTML = `<div class="item"><div class="d">Další začátky</div><div class="t">${SLOTS.join(' · ')}</div><div class="s">Výzvu do každého termínu vybírá hlasování níž. Nejvíc hlasů = nejbližší volný termín.</div></div>
-  <div class="item" id="leader"></div>`;
 
 
 /* Ecomail formulář: vlastní texty (widget se načte až na živém webu) */
@@ -835,32 +778,6 @@ document.addEventListener('click',e=>{
   setReg(a.dataset.reg);
 });
 
-/* hlasování s průběžnými výsledky */
-let votes = {...VOTES_MANUAL}, live = false;
-const vName = v => v.name || byId(v.id).name;
-function renderBars(){
-  const total = Object.values(votes).reduce((a,b)=>a+b,0);
-  const checked = (document.querySelector('input[name=hlas]:checked')||{}).value;
-  document.getElementById('bars').innerHTML = VOTE.map(v=>{
-    const n = votes[v.id]||0, pct = total? Math.round(n/total*100):0;
-    return `<label class="bar"><input type="radio" name="hlas" value="${vName(v)}" data-id="${v.id}" ${checked===vName(v)?'checked':''} required>
-      <span class="fill" style="width:${pct}%"></span><span class="lab">${vName(v)}${v.sub?`<small>${v.sub}</small>`:''}</span><span class="pct">${total? pct+' %':''}</span></label>`;
-  }).join('');
-  document.getElementById('voteNote').textContent = total ? `Zatím hlasovalo ${total} tvůrkyň.${live?'':' Stav aktualizuju ručně.'}` : 'Hlasování právě začalo, buď první.';
-  const top = [...VOTE].sort((a,b)=>(votes[b.id]||0)-(votes[a.id]||0))[0];
-  document.getElementById('leader').innerHTML = total && votes[top.id] ? `<div class="d">Zatím vede · kandidát na ${SLOTS[0]}</div><div class="t">${vName(top)}</div><div class="s">Hlasování ale pořád běží.</div>`
-    : `<div class="d">Termín ${SLOTS[0]}</div><div class="t">Rozhodne tvůj hlas</div><div class="s">Zatím nikdo nehlasoval.</div>`;
-}
-async function loadVotes(){
-  try{ const r = await fetch('/api/vote'); if(r.ok){ const d = await r.json(); votes = {...VOTES_MANUAL, ...d}; live = true; } }catch(e){}
-  renderBars();
-}
-renderBars(); loadVotes();
-document.addEventListener('click',e=>{
-  const a=e.target.closest('[data-vote]'); if(!a) return;
-  setTimeout(()=>{const i=document.querySelector(`input[data-id="${a.dataset.vote}"]`); if(i) i.checked=true;},50);
-});
-
 /* odeslání přes Formspree bez opuštění stránky */
 function ajax(formId, thanksId){
   const f = document.getElementById(formId);
@@ -875,15 +792,7 @@ function ajax(formId, thanksId){
     }catch(err){ fail(); }
   });
 }
-ajax('regForm','regThanks'); ajax('voteForm','voteThanks');
-
-
-document.getElementById('voteForm').addEventListener('submit',async()=>{
-  const i=document.querySelector('input[name=hlas]:checked'); if(!i) return;
-  try{ const r=await fetch('/api/vote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:i.dataset.id})});
-    if(r.ok){ votes={...VOTES_MANUAL,...(await r.json())}; live=true; renderBars(); return; } }catch(e){}
-  votes[i.dataset.id]=(votes[i.dataset.id]||0)+1; renderBars();
-});
+ajax('regForm','regThanks');
 
 /* kvíz: první „ne“ určuje výzvu */
 const Q = [
@@ -920,7 +829,7 @@ renderQ();
     ['.imagine .center, .moment, .imagine .punch', true],
     ['.stavba h2, .stavba .lead, .stage', true],
     ['#detail .center, .slider', false],
-    ['.schedule h2, .schedule .lead, .next-big, .then, .vote', true],
+    ['.schedule h2, .schedule .lead, .next-big', true],
     ['.story .grid > div', true],
     ['.reviews .center, .score, .rev', true],
     ['#pro-koho .center, .fit', true],
