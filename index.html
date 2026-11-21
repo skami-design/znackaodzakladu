@@ -717,7 +717,6 @@ const CH = [
 ];
 /* pevné termíny (registrace otevřená) — může jich běžet víc najednou */
 const NEXT_LIST = [
-  {id:'uklid', date:'28. 11.–4. 12.', open:true},
   {id:'ukaz', date:'28. 11.–4. 12.', open:true},
   {id:'ai', date:'28. 11.–4. 12.', open:true},
   {id:'stories', date:'7. 12.–13. 12.', open:true}
@@ -726,11 +725,11 @@ const NEXT_LIST = [
 const SLOTS = ['9. 12.','4. 1.','16. 1.','30. 1.'];
 /* hlasování: kandidáti (id výzvy nebo vlastní položka) */
 const VOTE = [
-  {id:'canva'},{id:'vizual'},{id:'znacka'},
+  {id:'uklid'},{id:'canva'},{id:'vizual'},{id:'znacka'},
   {id:'claude', name:'Grafika s Claudem', sub:'novinka'}
 ];
 /* ruční stav hlasů: použije se, dokud není napojené /api/vote (pak se počítá samo) */
-const VOTES_MANUAL = {canva:0, vizual:0, znacka:0, claude:0};
+const VOTES_MANUAL = {uklid:0, canva:0, vizual:0, znacka:0, claude:0};
 
 /* ====== RENDER ====== */
 const byId = id => CH.find(c=>c.id===id);
