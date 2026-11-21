@@ -711,7 +711,8 @@ const CH = [
    promise:'Za 7 dní máš AI pomocníka, který píše tvým hlasem, ne jako robot.',
    pro:['AI zkoušíš, ale výsledky nic moc','texty k příspěvkům píšeš hodinu','máš pocit, že ti ujíždí vlak'],
    co:['nastavíš si AI pomocníka zdarma','naučíš ho psát tvým hlasem','texty k příspěvkům a stories za pár minut','zásobárna nápadů na obsah','plánování týdne s AI','vlastní AI rutina'],
-   leave:'vlastní prompt na svou značku. Ne hotovou šablonu, ale nástroj, který umíš ovládat.'}
+   leave:'vlastní prompt na svou značku. Ne hotovou šablonu, ale nástroj, který umíš ovládat.',
+   page:'zkrot-ai.html'}
 ];
 /* pevný termín (registrace otevřená) */
 const NEXT = {id:'uklid', date:'28. 11.–4. 12.', open:true};
@@ -746,7 +747,7 @@ document.getElementById('detailList').innerHTML = CH.map(c=>{
   <div class="cols"><div><h4>Je pro tebe, pokud</h4><ul>${c.pro.map(x=>`<li>${x}</li>`).join('')}</ul></div>
   <div><h4>Co uděláme</h4><ul>${c.co.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>
   <div class="leave"><b>S čím odejdeš:</b> ${c.leave}</div></details>
-  <div class="actions">${act}<small>osobní zpětná vazba ke každému úkolu</small></div></div></article>`;
+  <div class="actions">${act}${c.page?`<a class="btn btn-ghost" href="${c.page}">Víc o výzvě</a>`:''}<small>osobní zpětná vazba ke každému úkolu</small></div></div></article>`;
 }).join('');
 
 /* slider */
