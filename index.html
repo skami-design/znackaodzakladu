@@ -183,6 +183,11 @@ nav .links a.btn{color:var(--mint-pale);padding:10px 20px;font-size:14px}
 .next-big p{color:#cfd8d1}
 .next-big .meta span{background:#2a3a30;color:var(--mint-pale)}
 .next-big .meta span.price{background:var(--mint);color:var(--ink)}
+.next-slots{grid-column:span 2;background:linear-gradient(120deg,var(--plum),var(--plum-2));color:#fff;border-radius:24px;padding:34px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.next-slots .kicker{color:var(--mauve-pale);margin:0}
+.next-slots .dates{font-family:var(--serif);font-size:32px}
+.next-slots p{color:#f1e3e8;margin:0;font-size:15px}
+@media(max-width:720px){.next-slots{grid-column:1/-1}}
 
 /* story */
 .story .grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-top:10px}
@@ -676,6 +681,8 @@ const NEXT_LIST = [
   {id:'ai', date:'28. 11.–4. 12.', open:true},
   {id:'stories', date:'7. 12.–13. 12.', open:true}
 ];
+/* další termíny, bez konkrétní výzvy zatím */
+const SLOTS = ['9. 12.','4. 1.','16. 1.','30. 1.'];
 /* ====== RENDER ====== */
 const byId = id => CH.find(c=>c.id===id);
 document.getElementById('stages').innerHTML = STAGES.map(s=>`
@@ -727,7 +734,9 @@ document.getElementById('nextBig').innerHTML = NEXT_LIST.map(nx=>{
   <h3>${n.name}</h3><p>${n.promise}</p>
   <div class="meta"><span class="price">${n.price}</span><span>${nx.date}</span><span>${n.days}</span><span>${n.cap}</span></div>
   <div><a class="btn btn-mint" href="#registrace" data-reg="${nx.id}">Chci místo</a></div></div>`;
-}).join('');
+}).join('') + `<div class="next-slots"><div class="kicker">Další kola</div>
+  <div class="dates">${SLOTS.join(' · ')}</div>
+  <p>Nové výzvy budou postupně otevírat tyhle termíny. Sleduj Instagram, ať ti to neuteče.</p></div>`;
 
 
 /* Ecomail formulář: vlastní texty (widget se načte až na živém webu) */
@@ -829,7 +838,7 @@ renderQ();
     ['.imagine .center, .moment, .imagine .punch', true],
     ['.stavba h2, .stavba .lead, .stage', true],
     ['#detail .center, .slider', false],
-    ['.schedule h2, .schedule .lead, .next-big', true],
+    ['.schedule h2, .schedule .lead, .next-big, .next-slots', true],
     ['.story .grid > div', true],
     ['.reviews .center, .score, .rev', true],
     ['#pro-koho .center, .fit', true],
