@@ -177,6 +177,7 @@ nav .links a.btn{color:var(--mint-pale);padding:10px 20px;font-size:14px}
 /* schedule */
 .schedule{background:var(--mint-pale)}
 .sched-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:26px;margin-top:40px}
+#nextBig{display:flex;flex-direction:column;gap:18px}
 .next-big{background:var(--ink);color:#fff;border-radius:24px;padding:34px;display:flex;flex-direction:column;gap:12px}
 .next-big .kicker{color:var(--mint);margin:0}
 .next-big h3{font-size:36px;color:#fff}
@@ -489,7 +490,7 @@ nav .links a{white-space:nowrap}
   <h2>Co se <em>chystá</em></h2>
   <p class="lead">Termíny začátků jsou dané. Kterou výzvu do nich dám, rozhodujete vy: výzva s nejvíc hlasy dostane nejbližší volný termín.</p>
   <div class="sched-grid">
-    <div class="next-big" id="nextBig"></div>
+    <div id="nextBig"></div>
     <div class="then" id="thenList"></div>
   </div>
   <form class="vote" action="https://formspree.io/f/xzdlojwl" method="POST" id="voteForm">
@@ -714,17 +715,22 @@ const CH = [
    leave:'vlastní prompt na svou značku. Ne hotovou šablonu, ale nástroj, který umíš ovládat.',
    page:'/zkrot-ai'}
 ];
-/* pevný termín (registrace otevřená) */
-const NEXT = {id:'uklid', date:'28. 11.–4. 12.', open:true};
+/* pevné termíny (registrace otevřená) — může jich běžet víc najednou */
+const NEXT_LIST = [
+  {id:'uklid', date:'28. 11.–4. 12.', open:true},
+  {id:'ukaz', date:'28. 11.–4. 12.', open:true},
+  {id:'ai', date:'28. 11.–4. 12.', open:true},
+  {id:'stories', date:'7. 12.–13. 12.', open:true}
+];
 /* další termíny začátků, výzvu do nich vybere hlasování */
 const SLOTS = ['9. 12.','4. 1.','16. 1.','30. 1.'];
 /* hlasování: kandidáti (id výzvy nebo vlastní položka) */
 const VOTE = [
-  {id:'ukaz'},{id:'stories'},{id:'ai'},{id:'canva'},{id:'vizual'},{id:'znacka'},
+  {id:'canva'},{id:'vizual'},{id:'znacka'},
   {id:'claude', name:'Grafika s Claudem', sub:'novinka'}
 ];
 /* ruční stav hlasů: použije se, dokud není napojené /api/vote (pak se počítá samo) */
-const VOTES_MANUAL = {ukaz:0, stories:0, ai:0, canva:0, vizual:0, znacka:0, claude:0};
+const VOTES_MANUAL = {canva:0, vizual:0, znacka:0, claude:0};
 
 /* ====== RENDER ====== */
 const byId = id => CH.find(c=>c.id===id);
@@ -736,9 +742,10 @@ document.getElementById('stages').innerHTML = STAGES.map(s=>`
 
 document.getElementById('detailList').innerHTML = CH.map(c=>{
   const st = STAGES.find(s=>s.id===c.stage);
-  const isNext = NEXT.id===c.id;
-  const when = isNext ? `<span>${NEXT.date}</span>` : `<span>termín podle hlasování</span>`;
-  const act = isNext && NEXT.open ? `<a class="btn btn-dark" href="#registrace">Chci místo</a>`
+  const nx = NEXT_LIST.find(x=>x.id===c.id);
+  const isNext = !!nx;
+  const when = isNext ? `<span>${nx.date}</span>` : `<span>termín podle hlasování</span>`;
+  const act = isNext && nx.open ? `<a class="btn btn-dark" href="#registrace" data-reg="${c.id}">Chci místo</a>`
     : `<a class="btn btn-dark" href="#terminy" data-vote="${c.id}">Hlasovat pro tuhle výzvu</a>`;
   return `<article class="detail" id="${c.id}" data-id="${c.id}"><img src="${c.img}" alt="${c.name}">
   <div class="b"><div class="stg">${st.name}</div><h3>${c.name}</h3><p class="promise">${c.promise}</p>
@@ -770,11 +777,13 @@ document.querySelectorAll('.ch-card').forEach(a=>a.addEventListener('click',e=>{
   setTimeout(()=>go(CH.findIndex(c=>c.id===id)),350);
 }));
 
-const n = byId(NEXT.id);
-document.getElementById('nextBig').innerHTML = `<div class="kicker">${NEXT.open?'Nejbližší kolo · registrace otevřená':'Nejbližší kolo'}</div>
+document.getElementById('nextBig').innerHTML = NEXT_LIST.map(nx=>{
+  const n = byId(nx.id);
+  return `<div class="next-big"><div class="kicker">${nx.open?'Registrace otevřená':'Nejbližší kolo'}</div>
   <h3>${n.name}</h3><p>${n.promise}</p>
-  <div class="meta"><span class="price">${n.price}</span><span>${NEXT.date}</span><span>${n.days}</span><span>${n.cap}</span></div>
-  <div><a class="btn btn-mint" href="#registrace">Chci místo</a></div>`;
+  <div class="meta"><span class="price">${n.price}</span><span>${nx.date}</span><span>${n.days}</span><span>${n.cap}</span></div>
+  <div><a class="btn btn-mint" href="#registrace" data-reg="${nx.id}">Chci místo</a></div></div>`;
+}).join('');
 document.getElementById('thenList').innerHTML = `<div class="item"><div class="d">Další začátky</div><div class="t">${SLOTS.join(' · ')}</div><div class="s">Výzvu do každého termínu vybírá hlasování níž. Nejvíc hlasů = nejbližší volný termín.</div></div>
   <div class="item" id="leader"></div>`;
 
@@ -809,17 +818,23 @@ document.getElementById('thenList').innerHTML = `<div class="item"><div class="d
   new MutationObserver(run).observe(box,{childList:true,subtree:true,attributes:true,attributeFilter:['style','class']}); run();
 })();
 
-/* registrace: jen pevný termín */
+/* registrace: jen pevné termíny, může jich být víc */
 const regSel = document.getElementById('regSel');
-const regList = [NEXT];
+const regList = NEXT_LIST.filter(r=>r.open);
 regSel.innerHTML = regList.map(r=>`<option value="${r.id}">${byId(r.id).name} · ${r.date}</option>`).join('');
 function setReg(id){
   const c = byId(id), r = regList.find(x=>x.id===id);
+  if(!c || !r) return;
   regSel.value = id;
   document.getElementById('koloField').value = `${c.name} · ${r.date} · ${c.price}`;
   document.getElementById('regLead').textContent = `${c.name} · ${r.date} · ${c.days} · ${c.price}. Po odeslání se ti ozvu s potvrzením a platebními údaji.`;
 }
-setReg(NEXT.id);
+setReg(NEXT_LIST[0].id);
+regSel.addEventListener('change',()=>setReg(regSel.value));
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-reg]'); if(!a) return;
+  setReg(a.dataset.reg);
+});
 
 /* hlasování s průběžnými výsledky */
 let votes = {...VOTES_MANUAL}, live = false;
